@@ -64,6 +64,8 @@ flutter:
   assets:
     - assets/images/user.png
     - assets/images/bell.png
+    - assets/images/more_primary.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

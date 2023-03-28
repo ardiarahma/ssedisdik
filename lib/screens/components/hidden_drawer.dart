@@ -3,6 +3,8 @@ import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:ssedisdik/constants.dart';
 import 'package:ssedisdik/screens/doc_page.dart';
 import 'package:ssedisdik/screens/home_page.dart';
+import 'package:ssedisdik/screens/profile_page.dart';
+
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -17,19 +19,7 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   void initState() {
     // TODO: implement initState
-    _pages.add(
-      new ScreenHiddenDrawer(
-          new ItemHiddenMenu(
-              name: "Profil",
-              baseStyle: TextStyle(
-                color: Colors.white,
-              ),
-              colorLineSelected: Colors.red,
-              selectedStyle: TextStyle(color: Colors.white)),
-          HomePage()),
-    );
-
-    _pages.add(
+      _pages.add(
       new ScreenHiddenDrawer(
           new ItemHiddenMenu(
               name: "Beranda",
@@ -39,6 +29,18 @@ class _MyDrawerState extends State<MyDrawer> {
               colorLineSelected: Colors.teal,
               selectedStyle: TextStyle(color: Colors.white)),
           HomePage()),
+    );
+
+    _pages.add(
+      new ScreenHiddenDrawer(
+          new ItemHiddenMenu(
+              name: "Profil",
+              baseStyle: TextStyle(
+                color: Colors.white,
+              ),
+              colorLineSelected: Colors.red,
+              selectedStyle: TextStyle(color: Colors.white)),
+          ProfilePage()),
     );
 
     _pages.add(
@@ -73,23 +75,30 @@ class _MyDrawerState extends State<MyDrawer> {
   Widget build(BuildContext context) {
     return HiddenDrawerMenu(
       screens: _pages,
-      backgroundColorMenu: Color.fromARGB(255, 84, 110, 122),
+      backgroundColorMenu: primaryColor,
       initPositionSelected: 0,
       contentCornerRadius: 30,
       slidePercent: 50,
       elevationAppBar: 0,
       actionsAppBar: [
         IconButton(
-          icon: Icon(Icons.notifications),
+          icon: Icon(
+            Icons.notifications,
+            color: primaryColor,
+          ),
           onPressed: () {
             //do something here
           },
         )
       ],
-      backgroundColorAppBar: primaryColor,
-      tittleAppBar: Center(
-        child: Text('SSEDISDIK'),
+      leadingAppBar: const Icon(
+        Icons.more_vert_rounded,
+        color: primaryColor,
       ),
+      backgroundColorAppBar: Colors.white,
+      tittleAppBar: Center(
+          // child: Text('SSEDISDIK'),
+          ),
     );
   }
 }
