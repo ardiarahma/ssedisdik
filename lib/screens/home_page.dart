@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ssedisdik/constants.dart';
+import 'components/home_card_item.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -62,9 +58,57 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+        // GridView.count(
+        //   crossAxisCount: 4,
+        //   scrollDirection: Axis.horizontal,
+        //   children: [ItemCard()],
+        // )
+      ],
+    );
+  }
+}
+
+class ItemGridHorizontal extends StatefulWidget {
+  const ItemGridHorizontal({super.key});
+
+  @override
+  State<ItemGridHorizontal> createState() => _ItemGridHorizontalState();
+}
+
+class _ItemGridHorizontalState extends State<ItemGridHorizontal> {
+  final List<Map<String, dynamic>> gridMap = [
+    {"title": "Total Permintaan TTE", "jumlah": 10},
+    {"title": "Belum di TTE", "jumlah": 10},
+    {"title": "Sudah di TTE", "jumlah": 10},
+    {"title": "Ditolak", "jumlah": 10}
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return GridView(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
+      children: [
+        // ItemCard(),
         Container(
           height: size.height * 0.2,
-          width: size.width * 1,
+          width: 50,
+          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
+          decoration: BoxDecoration(
+              color: Colors.red,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey, blurRadius: 10, offset: Offset(0, 10))
+              ],
+              borderRadius: BorderRadius.all(Radius.circular(4))),
+          child: Stack(
+              // ini nanti isinya 'Total Permintaan TTE'
+              ),
+        ),
+        Container(
+          height: size.height * 0.2,
+          width: 50,
           margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
           decoration: BoxDecoration(
               color: Colors.white,
@@ -79,8 +123,8 @@ class _HomePageState extends State<HomePage> {
         ),
         Container(
           height: size.height * 0.2,
-          width: size.width * 1,
-          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          width: 50,
+          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
           decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -89,13 +133,13 @@ class _HomePageState extends State<HomePage> {
               ],
               borderRadius: BorderRadius.all(Radius.circular(4))),
           child: Stack(
-              // ini nanti isinya 'Belum TTE'
+              // ini nanti isinya 'Total Permintaan TTE'
               ),
         ),
         Container(
           height: size.height * 0.2,
-          width: size.width * 1,
-          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          width: 50,
+          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
           decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -104,24 +148,9 @@ class _HomePageState extends State<HomePage> {
               ],
               borderRadius: BorderRadius.all(Radius.circular(4))),
           child: Stack(
-              // ini nanti isinya 'Selesai TTE'
+              // ini nanti isinya 'Total Permintaan TTE'
               ),
-        ),
-        Container(
-          height: size.height * 0.2,
-          width: size.width * 1,
-          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-          decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.grey, blurRadius: 10, offset: Offset(0, 10))
-              ],
-              borderRadius: BorderRadius.all(Radius.circular(4))),
-          child: Stack(
-              // ini nanti isinya 'Tolak TTE'
-              ),
-        ),
+        )
       ],
     );
   }
