@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
-import 'package:ssedisdik/src/features/home/home_card_item.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/home_card_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

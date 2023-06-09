@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
-import 'package:ssedisdik/src/features/document/doc_page.dart';
-import 'package:ssedisdik/src/features/home/home_page.dart';
-import 'package:ssedisdik/src/features/profile/profile_page.dart';
+import 'package:ssedisdik/src/features/authentication/screens/document/doc_page.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/home_page.dart';
+import 'package:ssedisdik/src/features/authentication/screens/profile/profile_page.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
