@@ -12,11 +12,15 @@ import 'package:flutter/material.dart'
         Text,
         TextStyle,
         ThemeData,
+        ThemeMode,
         Widget,
         runApp;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ssedisdik/screens/components/hidden_drawer.dart';
+import 'package:get/get.dart';
+import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
+import 'package:ssedisdik/src/features/authentication/screens/splash_screen/splash_screen.dart';
+import 'package:ssedisdik/src/utils/theme/theme.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -31,14 +35,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'skrisspi',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: SSETheme.lightTheme,
+      darkTheme: SSETheme.darkTheme,
+      themeMode: ThemeMode.system,
       // home: Home(),
-      home: MyDrawer(),
+      home: SplashScreen(),
     );
   }
 }

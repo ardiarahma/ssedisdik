@@ -37,6 +37,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   hidden_drawer_menu: ^3.0.1
+  google_fonts: ^4.0.4
+  flutter_native_splash: ^2.2.19
+  get:
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +55,10 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+flutter_native_splash:
+  color: "#f7f6f1"
+  dark_color: "#272727"
+
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -65,6 +72,11 @@ flutter:
     - assets/images/user.png
     - assets/images/bell.png
     - assets/images/more_primary.png
+    - assets/images/bottom_corner_left.png
+    - assets/images/e_sign.png
+    - assets/images/top_corner_right.png
+
+    - assets/logo/logo_disdik.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

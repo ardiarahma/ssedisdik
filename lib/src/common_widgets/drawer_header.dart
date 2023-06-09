@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ssedisdik/constants.dart';
+import 'package:ssedisdik/src/constants/colors.dart';
 
 class MyDrawerHeader extends StatefulWidget {
   @override

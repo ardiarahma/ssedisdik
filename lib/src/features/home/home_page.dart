@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ssedisdik/constants.dart';
-import 'components/home_card_item.dart';
+import 'package:ssedisdik/src/constants/colors.dart';
+import 'package:ssedisdik/src/features/home/home_card_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -58,6 +57,17 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+        Container(
+          decoration:
+              const BoxDecoration(border: Border(left: BorderSide(width: 4))),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // Text(tHomePage, style: txt,)
+            ],
+          ),
+        )
         // GridView.count(
         //   crossAxisCount: 4,
         //   scrollDirection: Axis.horizontal,

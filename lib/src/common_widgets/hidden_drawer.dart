@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
-import 'package:ssedisdik/constants.dart';
-import 'package:ssedisdik/screens/doc_page.dart';
-import 'package:ssedisdik/screens/home_page.dart';
-import 'package:ssedisdik/screens/profile_page.dart';
-
+import 'package:ssedisdik/src/constants/colors.dart';
+import 'package:ssedisdik/src/features/document/doc_page.dart';
+import 'package:ssedisdik/src/features/home/home_page.dart';
+import 'package:ssedisdik/src/features/profile/profile_page.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -19,7 +18,7 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   void initState() {
     // TODO: implement initState
-      _pages.add(
+    _pages.add(
       new ScreenHiddenDrawer(
           new ItemHiddenMenu(
               name: "Beranda",
