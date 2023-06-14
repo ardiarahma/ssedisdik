@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
+import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/image_strings.dart';
@@ -15,23 +16,23 @@ class OnBoardingController extends GetxController {
   final pages = [
     OnBoardingPageWidget(
         model: OnBoardingModel(
-            image: onBoardingImage1,
-            title: onBoardingTitle1,
-            subTitle: onBoardingSubtitle1,
-            counterText: onBoardingCounter1,
-            bgColor: onBoardingPage1Color)),
+            image: iOnBoardingImage1,
+            title: tOnBoardingTitle1,
+            subTitle: tOnBoardingSubtitle1,
+            counterText: tOnBoardingCounter1,
+            bgColor: cOnBoardingPage1Color)),
     OnBoardingPageWidget(
         model: OnBoardingModel(
-            image: onBoardingImage2,
-            title: onBoardingTitle2,
-            subTitle: onBoardingSubtitle2,
-            counterText: onBoardingCounter2,
-            bgColor: onBoardingPage2Color))
+            image: iOnBoardingImage2,
+            title: tOnBoardingTitle2,
+            subTitle: tOnBoardingSubtitle2,
+            counterText: tOnBoardingCounter2,
+            bgColor: cOnBoardingPage2Color))
   ];
 
   onPageChangedCallback(int activePageIndex) =>
       currentPage.value = activePageIndex;
-  skip() => controller.jumpToPage(page: 2);
+  skip() => Get.to(const MyDrawer());
   animateToNextSlide() {
     int nextPage = controller.currentPage + 1;
     controller.animateToPage(page: nextPage);

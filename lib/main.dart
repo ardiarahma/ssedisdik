@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       darkTheme: SSETheme.darkTheme,
       themeMode: ThemeMode.system,
       // home: Home(),
-      home: OnBoardingScreen(),
+      home: SplashScreen(),
     );
   }
 }

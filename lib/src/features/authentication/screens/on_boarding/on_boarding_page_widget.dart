@@ -30,12 +30,13 @@ class OnBoardingPageWidget extends StatelessWidget {
               Text(
                 model.title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: Theme.of(context).textTheme.displayMedium,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: Text(
                   model.subTitle,
+                  style: Theme.of(context).textTheme.displaySmall,
                   textAlign: TextAlign.center,
                 ),
               ),

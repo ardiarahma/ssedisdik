@@ -25,7 +25,7 @@ class SplashScreen extends StatelessWidget {
                 top: splashScreenController.animate.value ? 0 : -30,
                 right: splashScreenController.animate.value ? 0 : -30,
                 child: Image(
-                  image: AssetImage(tSplashTopIcon),
+                  image: AssetImage(iSplashTopIcon),
                 )),
           ),
           Obx(
@@ -34,7 +34,7 @@ class SplashScreen extends StatelessWidget {
                 bottom: splashScreenController.animate.value ? 0 : -30,
                 left: splashScreenController.animate.value ? 0 : -30,
                 child: Image(
-                  image: AssetImage(tSplashBottomIcon),
+                  image: AssetImage(iSplashBottomIcon),
                 )),
           ),
           Obx(
