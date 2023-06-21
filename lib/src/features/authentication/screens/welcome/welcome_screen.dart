@@ -6,6 +6,7 @@ import 'package:ssedisdik/src/common_widgets/fade_in_animation/fade_in_animation
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
+import 'package:ssedisdik/src/features/authentication/screens/login/login_screen.dart';
 
 import '../../../../common_widgets/fade_in_animation/fade_in_animation_controller.dart';
 
@@ -57,7 +58,7 @@ class WelcomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Get.to(() => const LoginScreen()),
                         child: Text("Masuk"),
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(

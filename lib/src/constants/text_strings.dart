@@ -20,3 +20,9 @@ const String tWelcomeSubtitle =
     "Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.";
 const String tLogin = "Masuk";
 const String tSignin = "Registrasi";
+
+// -- Login Screen Text
+const String tLoginTitle = "Selamat Datang,";
+const String tLoginSubtitle = "Silakan masukkan email dan password Anda.";
+const String tEmailInput = "Email";
+const String tPasswordInput = "Password";
