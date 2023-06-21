@@ -14,4 +14,4 @@ const String iOnBoardingImage2 =
 
 // - Welcome Screen Images
 const String iWelcomeScreenImage =
-    "assets/images/on_boarding_images/welcome_screen_images.png";
+    "assets/images/welcome_images/welcome_screen_images.png";

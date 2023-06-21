@@ -18,3 +18,5 @@ const String tOnBoardingCounter2 = "2/2";
 const String tWelcomeTitle = "Selamat Datang,";
 const String tWelcomeSubtitle =
     "Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.";
+const String tLogin = "Masuk";
+const String tSignin = "Registrasi";
