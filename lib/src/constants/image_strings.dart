@@ -12,6 +12,10 @@ const String iOnBoardingImage1 = "assets/images/on_boarding_images/e_sign.png";
 const String iOnBoardingImage2 =
     "assets/images/on_boarding_images/e_sign_1.png";
 
-// - Welcome Screen Images
+// -- Welcome Screen Images
 const String iWelcomeScreenImage =
     "assets/images/welcome_images/welcome_screen_images.png";
+
+// -- Login Screen Images
+const String logoBssn = "assets/logo/logo_bssn.png";
+const String logoBsre = "assets/logo/logo_bsre.png";
