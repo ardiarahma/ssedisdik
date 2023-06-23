@@ -45,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 Text(
                   tWelcomeTitle,
-                  style: Theme.of(context).textTheme.displayMedium,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 Text(
                   tWelcomeSubtitle,

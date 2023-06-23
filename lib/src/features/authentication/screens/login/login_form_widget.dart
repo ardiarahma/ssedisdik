@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/home_page.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -60,10 +64,10 @@ class LoginForm extends StatelessWidget {
                 Align(
                     alignment: Alignment.centerRight,
                     child: ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () => Get.to(() => MyDrawer()),
                       icon: Icon(Icons.login),
                       label: Text(tLogin),
-                    )),
+                    ))
                 // Image(
                 //   image: AssetImage(iLogoBSrE),
                 //   height: tLoginLogo,

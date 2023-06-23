@@ -26,3 +26,11 @@ const String tLoginTitle = "Selamat Datang,";
 const String tLoginSubtitle = "Silakan masukkan email dan password Anda.";
 const String tEmailInput = "Email";
 const String tPasswordInput = "Password";
+
+// -- Home Page Text
+const String tGreeting = "Halo, ";
+const String tGreetingSub = "Selamat datang di SSEDISDIK!";
+const String tHomeBanner1 = "Draft Dokumen";
+const String tHomeBanner2 = "Dokumen Terkirim";
+const String tHomeBanner3 = "Selesai TTE";
+const String tHomeBanner4 = "Dokumen Ditolak";

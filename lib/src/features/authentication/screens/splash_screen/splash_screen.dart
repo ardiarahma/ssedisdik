@@ -45,7 +45,7 @@ class SplashScreen extends StatelessWidget {
               children: [
                 Text(
                   AppName,
-                  style: Theme.of(context).textTheme.displayMedium,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 Text(
                   AppTagLine,
