@@ -159,7 +159,45 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: tHomePadding + 20.0),
+
+            Text(tDaftarDokumen, style: txtTheme.displayMedium),
             const SizedBox(height: tHomePadding),
+
+            // Search
+            TextField(
+              style: txtTheme.displaySmall?.apply(color: primaryColor),
+              decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey.shade300,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide.none),
+                  hintText: "Cari Dokumen",
+                  suffixIcon: Icon(Icons.search_rounded),
+                  suffixIconColor: primaryColor),
+            )
+            // PhysicalModel(
+            //   color: Colors.grey.shade100,
+            //   borderRadius: BorderRadius.circular(10.0),
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       border: Border(left: BorderSide(width: 5)),
+            //     ),
+            //     padding:
+            //         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text("Cari Dokumen",
+            //             style: txtTheme.displaySmall
+            //                 ?.apply(color: Colors.grey.withOpacity(0.50))),
+            //         const Icon(Icons.search, size: 20)
+            //       ],
+            //     ),
+            //   ),
+            // ),
 
             // Column(
             //   mainAxisAlignment: MainAxisAlignment.end,

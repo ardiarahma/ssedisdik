@@ -34,3 +34,4 @@ const String tHomeBanner1 = "Draft Dokumen";
 const String tHomeBanner2 = "Dokumen Terkirim";
 const String tHomeBanner3 = "Selesai TTE";
 const String tHomeBanner4 = "Dokumen Ditolak";
+const String tDaftarDokumen = "Daftar Dokumen";
