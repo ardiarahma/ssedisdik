@@ -47,14 +47,14 @@ class LoginForm extends StatelessWidget {
                   children: [
                     Container(
                       child: const Image(
-                        image: AssetImage(logoDisdik),
+                        image: AssetImage(logoBssn),
                         height: tLoginLogo,
                         width: tLoginLogo,
                       ),
                     ),
                     Container(
                       child: const Image(
-                        image: AssetImage(logoDisdik),
+                        image: AssetImage(logoBsre),
                         height: tLoginLogo,
                         width: tLoginLogo,
                       ),

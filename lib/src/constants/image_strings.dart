@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // -- Splash Screen Images
-const String logoDisdik = "assets/logo/logo_disdik.png";
+const String logoSse = "assets/logo/logo_sse_complete.png";
 const String iSplashTopIcon =
     "assets/images/splash_images/top_corner_right.png";
 const String iSplashBottomIcon =
@@ -19,3 +19,6 @@ const String iWelcomeScreenImage =
 // -- Login Screen Images
 const String logoBssn = "assets/logo/logo_bssn.png";
 const String logoBsre = "assets/logo/logo_bsre.png";
+
+// -- Home Screen Images
+const String logoSseOnly = "assets/logo/logo_sse_only";

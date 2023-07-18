@@ -65,7 +65,7 @@ class SplashScreen extends StatelessWidget {
                   rightBefore: 100,
                   leftAfter: 100,
                   leftBefore: 100),
-              child: Image(image: AssetImage(logoDisdik))),
+              child: Image(image: AssetImage(logoSse))),
           TFadeInAnimation(
             durationInMs: 2400,
             animatePosition: TAnimatePosition(
