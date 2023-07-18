@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/features/authentication/screens/login/login_form_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/login/login_header_widget.dart';
-
-import '../../../../constants/text_strings.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});

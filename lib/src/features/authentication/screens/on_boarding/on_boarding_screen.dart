@@ -3,12 +3,7 @@ import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
-import 'package:ssedisdik/src/constants/image_strings.dart';
-import 'package:ssedisdik/src/constants/sizes.dart';
-import 'package:ssedisdik/src/constants/text_strings.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/on_boarding_controller.dart';
-import 'package:ssedisdik/src/features/authentication/models/on_boarding_model.dart';
-import 'package:ssedisdik/src/features/authentication/screens/on_boarding/on_boarding_page_widget.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen({super.key});

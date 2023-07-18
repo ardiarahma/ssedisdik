@@ -1,11 +1,9 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
-import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
-import 'package:ssedisdik/src/features/authentication/screens/home/home_card_item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

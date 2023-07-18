@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:matcher/matcher.dart';
 
 // -- Splash Screen Text

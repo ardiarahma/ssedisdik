@@ -1,3 +1,5 @@
+// ignore_for_file: unused_shown_name
+
 import 'package:flutter/material.dart'
     show
         BuildContext,
@@ -15,11 +17,8 @@ import 'package:flutter/material.dart'
         ThemeMode,
         Widget,
         runApp;
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
-import 'package:ssedisdik/src/features/authentication/screens/on_boarding/on_boarding_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/splash_screen/splash_screen.dart';
 import 'package:ssedisdik/src/utils/theme/theme.dart';
 

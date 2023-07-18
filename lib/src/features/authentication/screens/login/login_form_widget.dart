@@ -5,7 +5,6 @@ import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
-import 'package:ssedisdik/src/features/authentication/screens/home/home_page.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({

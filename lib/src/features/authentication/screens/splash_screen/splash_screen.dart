@@ -1,4 +1,5 @@
-import 'dart:js';
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ssedisdik/src/common_widgets/fade_in_animation/animation_design.dart';
