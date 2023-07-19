@@ -1,5 +1,8 @@
+// ignore_for_file: unused_import
+
 import 'package:get/get.dart';
 import 'package:ssedisdik/src/features/authentication/screens/welcome/welcome_screen.dart';
+import 'package:ssedisdik/src/features/authentication/screens/login/login_screen.dart';
 
 class FadeInAnimationController extends GetxController {
   static FadeInAnimationController get find => Get.find();
@@ -11,7 +14,7 @@ class FadeInAnimationController extends GetxController {
     await Future.delayed(Duration(milliseconds: 3000));
     animate.value = false;
     await Future.delayed(Duration(milliseconds: 5000));
-    Get.offAll(() => WelcomeScreen(),
+    Get.offAll(() => LoginScreen(),
         duration: const Duration(milliseconds: 1000),
         transition: Transition.fadeIn);
   }

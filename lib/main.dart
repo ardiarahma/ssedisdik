@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
       title: 'skrisspi',
       theme: SSETheme.lightTheme,
       darkTheme: SSETheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
+
       // home: Home(),
       home: SplashScreen(),
     );

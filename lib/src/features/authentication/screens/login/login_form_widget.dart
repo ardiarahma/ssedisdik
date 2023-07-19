@@ -6,6 +6,8 @@ import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
 
+import '../../../../constants/colors.dart';
+
 class LoginForm extends StatelessWidget {
   const LoginForm({
     super.key,
@@ -15,7 +17,8 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: tFormHeight - 10),
+        padding: EdgeInsets.symmetric(
+            vertical: tFormHeight - 10, horizontal: tDefaultSize),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,35 +41,84 @@ class LoginForm extends StatelessWidget {
                         onPressed: null,
                         icon: Icon(Icons.remove_red_eye_sharp)))),
             const SizedBox(height: tFormHeight - 20),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      child: const Image(
-                        image: AssetImage(logoBssn),
-                        height: tLoginLogo,
-                        width: tLoginLogo,
+                    SizedBox(
+                      width: 270,
+                      height: 45,
+                      child: ElevatedButton.icon(
+                        style: ButtonStyle(
+                            shape: MaterialStatePropertyAll(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)))),
+                        onPressed: () => Get.to(() => MyDrawer()),
+                        icon: Icon(Icons.login),
+                        label: Text(
+                          tLogin,
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
                       ),
                     ),
-                    Container(
-                      child: const Image(
-                        image: AssetImage(logoBsre),
-                        height: tLoginLogo,
-                        width: tLoginLogo,
-                      ),
-                    ),
+                    SizedBox(width: 5),
+                    Expanded(
+                        child: Container(
+                            height: 45,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: buttonColor,
+                            ),
+                            child: TextButton(
+                                onPressed: () => Get.to(() => MyDrawer()),
+                                child: Icon(
+                                  Icons.fingerprint_rounded,
+                                  color: Colors.white,
+                                  size: 30,
+                                )))
+                        // child: ElevatedButton.icon(
+                        //   style: ButtonStyle(
+                        //       shape: MaterialStatePropertyAll(
+                        //           RoundedRectangleBorder(
+                        //               borderRadius: BorderRadius.circular(10)))),
+                        //   onPressed: () => Get.to(() => MyDrawer()),
+                        //   icon: Icon(Icons.fingerprint_rounded),
+                        //   label: Text(""),
+                        // ),
+                        ),
                   ],
                 ),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton.icon(
-                      onPressed: () => Get.to(() => MyDrawer()),
-                      icon: Icon(Icons.login),
-                      label: Text(tLogin),
-                    ))
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: const Image(
+                          image: AssetImage(logoBssn),
+                          height: 50,
+                          width: 50,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 7, right: 7),
+                        child: const Image(
+                          image: AssetImage(logoBsre),
+                          height: 70,
+                          width: 110,
+                        ),
+                      ),
+                      Container(
+                        child: const Image(
+                          image: AssetImage(logoDisdik),
+                          height: 45,
+                          width: 45,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 // Image(
                 //   image: AssetImage(iLogoBSrE),
                 //   height: tLoginLogo,
