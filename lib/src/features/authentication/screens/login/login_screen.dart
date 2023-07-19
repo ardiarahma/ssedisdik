@@ -7,6 +7,7 @@ import 'package:wave/wave.dart';
 
 import '../../../../constants/colors.dart';
 import '../../../../constants/image_strings.dart';
+import 'login_footer_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -47,9 +48,14 @@ class LoginScreen extends StatelessWidget {
                     height: size.height * 0.2,
                   ),
                 ),
-                SizedBox(height: 35),
-                Container(child: LoginHeaderWidget(size: size)),
-                const LoginForm()
+                const SizedBox(height: 35),
+                LoginHeaderWidget(size: size),
+                const LoginForm(),
+                Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(child: const LoginFooterWidget()))
               ],
             )
           ],

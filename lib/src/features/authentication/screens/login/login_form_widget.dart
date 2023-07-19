@@ -73,23 +73,14 @@ class LoginForm extends StatelessWidget {
                             ),
                             child: TextButton(
                                 onPressed: () => Get.to(() => MyDrawer()),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.fingerprint_rounded,
                                   color: Colors.white,
                                   size: 30,
-                                )))
-                        // child: ElevatedButton.icon(
-                        //   style: ButtonStyle(
-                        //       shape: MaterialStatePropertyAll(
-                        //           RoundedRectangleBorder(
-                        //               borderRadius: BorderRadius.circular(10)))),
-                        //   onPressed: () => Get.to(() => MyDrawer()),
-                        //   icon: Icon(Icons.fingerprint_rounded),
-                        //   label: Text(""),
-                        // ),
-                        ),
+                                )))),
                   ],
                 ),
+                const SizedBox(height: 15),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -119,11 +110,6 @@ class LoginForm extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Image(
-                //   image: AssetImage(iLogoBSrE),
-                //   height: tLoginLogo,
-                //   width: tLoginLogo,
-                // ),
               ],
             )
           ],

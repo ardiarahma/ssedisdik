@@ -28,6 +28,8 @@ const String tLoginTitle = "Selamat Datang,";
 const String tLoginSubtitle = "Silakan masukkan email dan password Anda.";
 const String tEmailInput = "Email";
 const String tPasswordInput = "Password";
+const String tFooterDev = "Developed by PUSDATIN © 2023";
+const String tFooterDisdik = "Dinas Pendidikan Provinsi DKI Jakarta";
 
 // -- Home Page Text
 const String tGreeting = "Halo, ";
