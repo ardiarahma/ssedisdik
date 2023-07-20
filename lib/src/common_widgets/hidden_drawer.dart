@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/features/authentication/screens/document/doc_page.dart';
-import 'package:ssedisdik/src/features/authentication/screens/home/home_page.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/home_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/profile/profile_page.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -45,7 +45,7 @@ class _MyDrawerState extends State<MyDrawer> {
     _pages.add(
       new ScreenHiddenDrawer(
           new ItemHiddenMenu(
-            name: "Dokumen",
+            name: "Validasi",
             baseStyle: TextStyle(
               color: Colors.white,
             ),
@@ -83,7 +83,7 @@ class _MyDrawerState extends State<MyDrawer> {
         IconButton(
           icon: Icon(
             Icons.notifications,
-            color: primaryColor,
+            color: Colors.white,
           ),
           onPressed: () {
             //do something here
@@ -92,9 +92,9 @@ class _MyDrawerState extends State<MyDrawer> {
       ],
       leadingAppBar: const Icon(
         Icons.more_vert_rounded,
-        color: primaryColor,
+        color: Colors.white,
       ),
-      backgroundColorAppBar: Colors.white,
+      backgroundColorAppBar: primaryColor,
       tittleAppBar: Center(
           // child: Text('SSEDISDIK'),
           ),

@@ -59,7 +59,10 @@ class LoginForm extends StatelessWidget {
                         icon: Icon(Icons.login),
                         label: Text(
                           tLogin,
-                          style: TextStyle(color: Colors.white, fontSize: 18),
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium
+                              ?.copyWith(color: Colors.white, fontSize: 18),
                         ),
                       ),
                     ),

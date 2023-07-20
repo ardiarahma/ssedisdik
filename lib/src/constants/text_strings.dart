@@ -32,8 +32,9 @@ const String tFooterDev = "Developed by PUSDATIN © 2023";
 const String tFooterDisdik = "Dinas Pendidikan Provinsi DKI Jakarta";
 
 // -- Home Page Text
-const String tGreeting = "Halo, ";
+const String tGreeting = "Hai, ";
 const String tGreetingSub = "Selamat datang di SSEDISDIK!";
+const String tInfoSse = "Info SSEDISDIK";
 const String tHomeBanner1 = "Draft Dokumen";
 const String tHomeBanner2 = "Dokumen Terkirim";
 const String tHomeBanner3 = "Selesai TTE";

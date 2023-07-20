@@ -24,4 +24,4 @@ const String logoBsre = "assets/logo/logo_bsre.png";
 const String logoDisdik = "assets/logo/logo_disdik.png";
 
 // -- Home Screen Images
-const String logoSseOnly = "assets/logo/logo_sse_only";
+const String logoSseOnly = "assets/logo/logo_sse_only.png";
