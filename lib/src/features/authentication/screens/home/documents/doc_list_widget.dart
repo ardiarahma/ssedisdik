@@ -63,7 +63,7 @@ class DocumentsWidget extends StatelessWidget {
                         .textTheme
                         .displayMedium
                         ?.copyWith(fontSize: 14, color: Colors.white)),
-                Text(model.originFrom,
+                Text(model.date,
                     textAlign: TextAlign.left,
                     style: Theme.of(context)
                         .textTheme
@@ -83,7 +83,7 @@ class DocumentsWidget extends StatelessWidget {
                         .textTheme
                         .displayMedium
                         ?.copyWith(fontSize: 14, color: Colors.white)),
-                Text(model.originFrom,
+                Text(model.totalTte,
                     textAlign: TextAlign.left,
                     style: Theme.of(context)
                         .textTheme
