@@ -72,32 +72,46 @@ class _MyDrawerState extends State<MyDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return HiddenDrawerMenu(
-      screens: _pages,
-      backgroundColorMenu: primaryColor,
-      initPositionSelected: 0,
-      contentCornerRadius: 30,
-      slidePercent: 50,
-      elevationAppBar: 0,
-      actionsAppBar: [
-        IconButton(
-          icon: Icon(
-            Icons.notifications,
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: HiddenDrawerMenu(
+          screens: _pages,
+          backgroundColorMenu: primaryColor,
+          initPositionSelected: 0,
+          contentCornerRadius: 30,
+          slidePercent: 50,
+          elevationAppBar: 0,
+          actionsAppBar: [
+            IconButton(
+              icon: const Icon(
+                Icons.notifications,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                //do something here
+              },
+            )
+          ],
+          leadingAppBar: const Icon(
+            Icons.more_vert_rounded,
             color: Colors.white,
           ),
-          onPressed: () {
-            //do something here
-          },
-        )
-      ],
-      leadingAppBar: const Icon(
-        Icons.more_vert_rounded,
-        color: Colors.white,
+          enableScaleAnimation: true,
+          backgroundColorAppBar: primaryColor,
+        ),
       ),
-      backgroundColorAppBar: primaryColor,
-      tittleAppBar: Center(
-          // child: Text('SSEDISDIK'),
-          ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // do something here
+            print('FAB berhasil diklik');
+          },
+          backgroundColor: buttonColor,
+          child: const Icon(
+            Icons.file_present_rounded,
+            color: Colors.white,
+          )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

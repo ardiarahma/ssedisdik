@@ -34,27 +34,27 @@ class SplashScreen extends StatelessWidget {
                   bottomAfter: 0,
                   bottomBefore: -30),
               child: const Image(image: AssetImage(iSplashBottomIcon))),
-          TFadeInAnimation(
-            durationInMs: 1600,
-            animatePosition: TAnimatePosition(
-                topAfter: 50,
-                topBefore: 50,
-                leftAfter: tDefaultSize,
-                leftBefore: -80),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppName,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-                Text(
-                  AppTagLine,
-                  style: Theme.of(context).textTheme.displaySmall,
-                )
-              ],
-            ),
-          ),
+          // TFadeInAnimation(
+          //   durationInMs: 1600,
+          //   animatePosition: TAnimatePosition(
+          //       topAfter: 50,
+          //       topBefore: 50,
+          //       leftAfter: tDefaultSize,
+          //       leftBefore: -80),
+          //   child: Column(
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: [
+          //       Text(
+          //         AppName,
+          //         style: Theme.of(context).textTheme.displayLarge,
+          //       ),
+          //       Text(
+          //         AppTagLine,
+          //         style: Theme.of(context).textTheme.displaySmall,
+          //       )
+          //     ],
+          //   ),
+          // ),
           TFadeInAnimation(
               durationInMs: 2400,
               animatePosition: TAnimatePosition(

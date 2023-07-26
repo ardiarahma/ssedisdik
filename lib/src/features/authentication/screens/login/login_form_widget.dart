@@ -44,6 +44,7 @@ class LoginForm extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // -- Login Button Options
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -66,23 +67,34 @@ class LoginForm extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
+
+                    // -- Fingerprint Button
                     Expanded(
                         child: Container(
                             height: 45,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: buttonColor,
+                              color: primaryColor,
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.grey,
+                                    blurRadius: 2,
+                                    offset: Offset(0, 2))
+                              ],
                             ),
                             child: TextButton(
-                                onPressed: () => Get.to(() => MyDrawer()),
+                                onPressed: () => Get.to(() => const MyDrawer()),
                                 child: const Icon(
                                   Icons.fingerprint_rounded,
                                   color: Colors.white,
                                   size: 30,
                                 )))),
+                    // -- End of Fingerprint Button
                   ],
                 ),
+
+                // -- End of Login Options Button
                 const SizedBox(height: 15),
                 Center(
                   child: Row(

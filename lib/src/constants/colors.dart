@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 const primaryColor = Color.fromARGB(255, 31, 41, 55);
-const buttonColor = Color.fromARGB(255, 5, 25, 53);
+// const buttonColor = Color.fromARGB(255, 17, 69, 90);
+const buttonColor = Colors.teal;
+
 const powderBlue = Color(0xffa6c1d6);
 const reflection = Color(0xffdfdedc);
 

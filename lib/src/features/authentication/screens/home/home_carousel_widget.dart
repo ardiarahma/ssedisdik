@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
+import 'package:ssedisdik/src/constants/sizes.dart';
 
 class HomeCarouselWidget extends StatefulWidget {
   const HomeCarouselWidget({super.key});
@@ -31,7 +32,8 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
             items: [
               for (int i = 0; i < itemColors.length; i++)
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                  margin: const EdgeInsets.symmetric(
+                      vertical: tHomePadding, horizontal: 5),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: primaryColor,

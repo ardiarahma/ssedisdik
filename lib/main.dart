@@ -19,10 +19,12 @@ import 'package:flutter/material.dart'
         runApp;
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:ssedisdik/src/features/authentication/controllers/home/documents_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/splash_screen/splash_screen.dart';
 import 'package:ssedisdik/src/utils/theme/theme.dart';
 
 void main() {
+  Get.put(DocumentsController());
   // WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setPreferredOrientations(
   //     [DeviceOrientation.landscapeRight, DeviceOrientation.portraitUp]);

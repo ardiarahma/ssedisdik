@@ -1,10 +1,13 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
+import 'package:ssedisdik/src/features/authentication/controllers/home/documents_controller.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_list_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_carousel_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_header_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -69,7 +72,7 @@ class HomePage extends StatelessWidget {
 
               // -- Carousel Slider Start
               const HomeCarouselWidget(),
-              const SizedBox(height: 10),
+              const SizedBox(height: tHomePadding),
               // -- End of Slider
 
               // -- Documents List Start
@@ -78,194 +81,53 @@ class HomePage extends StatelessWidget {
                   child: Text(tDaftarDokumen,
                       style: txtTheme.displayLarge?.copyWith(
                           fontSize: 18, fontWeight: FontWeight.bold))),
+
+              // -- Search
+
               const SizedBox(height: tHomePadding),
 
-              // -- End of Documents List
+              // -- Title Documents
+              TextField(
+                style: txtTheme.displaySmall?.copyWith(fontSize: 16),
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey.shade300,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide.none),
+                    hintText: "Cari Dokumen",
+                    suffixIcon: const Icon(Icons.search_rounded),
+                    suffixIconColor: primaryColor),
+              ),
+              // -- End of Documents Title
+
+              const SizedBox(height: tHomePadding),
+
+              // -- ListView Documents
+              GetBuilder<DocumentsController>(
+                builder: (controller) {
+                  return SizedBox(
+                    height: 300,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: controller.documentsList.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: DocumentsWidget(
+                            model: controller.documentsList[index],
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              )
+              // -- End of ListView
             ],
           ),
         )
-      ]
-
-          // -- Banner 1 & 2
-          // Row(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     Expanded(
-          //       child: PhysicalModel(
-          //         color: Colors.white,
-          //         elevation: 6.0,
-          //         shadowColor: Colors.grey,
-          //         borderRadius: BorderRadius.circular(10.0),
-          //         child: Container(
-          //           decoration: BoxDecoration(
-          //               border: const Border(
-          //                   left:
-          //                       BorderSide(width: 5.0, color: Colors.blue))),
-          //           padding: const EdgeInsets.symmetric(
-          //               horizontal: 10, vertical: 20),
-          //           child: Column(
-          //             crossAxisAlignment: CrossAxisAlignment.start,
-          //             children: [
-          //               Text(
-          //                 "000",
-          //                 style: txtTheme.displayMedium,
-          //               ),
-          //               const SizedBox(height: 25),
-          //               Text(tHomeBanner1, style: txtTheme.bodySmall)
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //     const SizedBox(width: tHomePadding),
-          //     Expanded(
-          //       child: PhysicalModel(
-          //         color: Colors.white,
-          //         elevation: 6.0,
-          //         shadowColor: Colors.grey,
-          //         borderRadius: BorderRadius.circular(10.0),
-          //         child: Container(
-          //           decoration: BoxDecoration(
-          //               border: const Border(
-          //                   left: BorderSide(
-          //                       width: 5.0, color: Colors.yellow))),
-          //           padding: const EdgeInsets.symmetric(
-          //               horizontal: 10, vertical: 20),
-          //           child: Column(
-          //             crossAxisAlignment: CrossAxisAlignment.start,
-          //             children: [
-          //               Text(
-          //                 "000",
-          //                 style: txtTheme.displayMedium,
-          //               ),
-          //               const SizedBox(height: 25),
-          //               Text(tHomeBanner2, style: txtTheme.bodySmall)
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // const SizedBox(height: tHomePadding),
-
-          // -- Banner 3 & 4
-          // Row(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     Expanded(
-          //       child: PhysicalModel(
-          //         color: Colors.white,
-          //         elevation: 6.0,
-          //         shadowColor: Colors.grey,
-          //         borderRadius: BorderRadius.circular(10.0),
-          //         child: Container(
-          //           decoration: BoxDecoration(
-          //               border: const Border(
-          //                   left:
-          //                       BorderSide(width: 5.0, color: Colors.green))),
-          //           padding: const EdgeInsets.symmetric(
-          //               horizontal: 10, vertical: 20),
-          //           child: Column(
-          //             crossAxisAlignment: CrossAxisAlignment.start,
-          //             children: [
-          //               Text(
-          //                 "000",
-          //                 style: txtTheme.displayMedium,
-          //               ),
-          //               const SizedBox(height: 25),
-          //               Text(tHomeBanner3, style: txtTheme.bodySmall)
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //     const SizedBox(width: tHomePadding),
-          //     Expanded(
-          //       child: PhysicalModel(
-          //         color: Colors.white,
-          //         elevation: 6.0,
-          //         shadowColor: Colors.grey,
-          //         borderRadius: BorderRadius.circular(10.0),
-          //         child: Container(
-          //           decoration: BoxDecoration(
-          //               border: const Border(
-          //                   left: BorderSide(width: 5.0, color: Colors.red))),
-          //           padding: const EdgeInsets.symmetric(
-          //               horizontal: 10, vertical: 20),
-          //           child: Column(
-          //             crossAxisAlignment: CrossAxisAlignment.start,
-          //             children: [
-          //               Text(
-          //                 "000",
-          //                 style: txtTheme.displayMedium,
-          //               ),
-          //               const SizedBox(height: 25),
-          //               Text(tHomeBanner4, style: txtTheme.bodySmall)
-          //             ],
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // const SizedBox(height: tHomePadding + 20.0),
-
-          // Text(tDaftarDokumen, style: txtTheme.displayMedium),
-          // const SizedBox(height: tHomePadding),
-
-          // -- Search
-          // TextField(
-          //   style: txtTheme.displaySmall?.apply(color: primaryColor),
-          //   decoration: InputDecoration(
-          //       filled: true,
-          //       fillColor: Colors.grey.shade300,
-          //       border: OutlineInputBorder(
-          //           borderRadius: BorderRadius.circular(10.0),
-          //           borderSide: BorderSide.none),
-          //       hintText: "Cari Dokumen",
-          //       suffixIcon: Icon(Icons.search_rounded),
-          //       suffixIconColor: primaryColor),
-          // )
-          // PhysicalModel(
-          //   color: Colors.grey.shade100,
-          //   borderRadius: BorderRadius.circular(10.0),
-          //   child: Container(
-          //     decoration: BoxDecoration(
-          //       border: Border(left: BorderSide(width: 5)),
-          //     ),
-          //     padding:
-          //         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //       crossAxisAlignment: CrossAxisAlignment.start,
-          //       children: [
-          //         Text("Cari Dokumen",
-          //             style: txtTheme.displaySmall
-          //                 ?.apply(color: Colors.grey.withOpacity(0.50))),
-          //         const Icon(Icons.search, size: 20)
-          //       ],
-          //     ),
-          //   ),
-          // ),
-
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.end,
-          //   crossAxisAlignment: CrossAxisAlignment.end,
-          //   children: [
-          //     Container(
-          //       color: primaryColor,
-          //       padding: const EdgeInsets.all(tHomePadding),
-          //       child: Center(
-          //           child: Text('Dinas Pendidikan Prov. DKI Jakarta © 2023',
-          //               style: txtTheme.bodySmall)),
-          //     ),
-          //   ],
-          // )
-          // ],
-          ),
+      ]),
     );
   }
 }
