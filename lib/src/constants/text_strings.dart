@@ -40,6 +40,7 @@ const String tHomeBanner2 = "Dokumen Terkirim";
 const String tHomeBanner3 = "Selesai TTE";
 const String tHomeBanner4 = "Dokumen Ditolak";
 const String tDaftarDokumen = "Daftar Dokumen";
+const String tSearchDoc = "Cari Dokumen";
 
 // -- Home Page - Documents Dummy List String
 const String tDocName1 =
@@ -57,3 +58,8 @@ const String tDocName3 =
 const String tOrigin3 = "Bidang SMA";
 const String tDate3 = "12 Juli 2023";
 const String tTotal3 = "3";
+
+// -- Home Page - Upload Documents String
+const String tDetailTitle = "Detail Dokumen";
+const String tUploadTitle = "Unggah Dokumen";
+const String tPerihal = "Nomor / Perihal / No. e-Office";

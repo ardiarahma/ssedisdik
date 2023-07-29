@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
-import 'package:ssedisdik/src/features/authentication/screens/document/doc_page.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/upload_document_screen.dart';
+import 'package:ssedisdik/src/features/authentication/screens/validation_page/doc_page.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/profile/profile_page.dart';
 
@@ -13,7 +15,7 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  List<ScreenHiddenDrawer> _pages = [];
+  final List<ScreenHiddenDrawer> _pages = [];
 
   @override
   void initState() {
@@ -102,10 +104,7 @@ class _MyDrawerState extends State<MyDrawer> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // do something here
-            print('FAB berhasil diklik');
-          },
+          onPressed: () => Get.to(() => UploadScreen()),
           backgroundColor: buttonColor,
           child: const Icon(
             Icons.file_present_rounded,
