@@ -72,14 +72,18 @@ class UploadScreen extends StatelessWidget {
                   const SizedBox(
                     height: 5.0,
                   ),
+
+                  // Documents Title
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tPerihal,
                           style:
                               txtTheme.displayLarge?.copyWith(fontSize: 14))),
+
                   const SizedBox(
                     height: 5.0,
                   ),
+
                   TextField(
                     keyboardType: TextInputType.multiline,
                     style: txtTheme.displaySmall?.copyWith(fontSize: 14),
@@ -95,9 +99,13 @@ class UploadScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // Ends of Documents Title
+
                   const SizedBox(
                     height: 10.0,
                   ),
+
+                  // -- Documents Categories
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -106,11 +114,58 @@ class UploadScreen extends StatelessWidget {
                           child: Text(tCategories,
                               style: txtTheme.displayLarge
                                   ?.copyWith(fontSize: 14))),
-
-
                       CategoryDropdownButton(
                           categories: docCategoriesController.categories)
                     ],
+                  ),
+                  // -- Ends of Documents Categories
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(tUploadTitle,
+                          style: txtTheme.displayLarge?.copyWith(
+                              fontSize: 18, fontWeight: FontWeight.bold))),
+
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+
+                  Container(
+                    padding: const EdgeInsets.all(7.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: blue_pallete_1),
+                        borderRadius: BorderRadius.circular(15.0),
+                        color: powderBlue),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const Icon(
+                              Icons.info_outline_rounded,
+                              color: Colors.red,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 7.0, top: 2.0),
+                              child: Text(tDocumentRules,
+                                  style: txtTheme.displayLarge?.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold)),
+                            )
+                          ],
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 8.0, left: 10.0),
+                          // child: Text("Dokumen harus berformat PDF. n/ Lokasi TTE pada dokumen telah ditandai dengan hastag(#) n/ Jika ada dua TTE dalam satu halaman, maka dibedakan dengan jumlah hastag(#). Contoh: # dan ##.",),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
