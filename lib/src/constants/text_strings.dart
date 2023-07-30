@@ -63,3 +63,4 @@ const String tTotal3 = "3";
 const String tDetailTitle = "Detail Dokumen";
 const String tUploadTitle = "Unggah Dokumen";
 const String tPerihal = "Nomor / Perihal / No. e-Office";
+const String tCategories = "Kategori";
