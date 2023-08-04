@@ -65,3 +65,15 @@ const String tUploadTitle = "Unggah Dokumen";
 const String tPerihal = "Nomor / Perihal / No. e-Office";
 const String tCategories = "Kategori Dokumen";
 const String tDocumentRules = "Ketentuan Dokumen";
+const String tDocumentOrigin = "Asal Dokumen";
+
+// -- Home Page - Upload Documents - Rule
+const String tBullet1 = "Dokumen harus berformat PDF.";
+const String tBullet2 = "Lokasi TTE pada dokumen telah ditandai dengan hastag(#).";
+const String tBullet3 = "Jika ada dua TTE dalam satu halaman, maka dibedakan dengan jumlah hastag(#). Contoh: # dan ##.";
+const String tBullet4 = "Dokumen tanpa tanda hastag(#), TTE tidak akan terproses kecuali untuk permintaan paraf.";
+const String tBullet5 = "Khusus untuk multi file (unggah lebih dari satu file), harus memiliki format dan posisi TTE yang sama.";
+const String tBullet6 = "Maksimal unggah 500 dokumen dalam sekali proses";
+const String tBullet7 = "Petunjuk teknis set TTE pada dokumen sebelum diunggah dapat dilihat pada video ini.";
+
+

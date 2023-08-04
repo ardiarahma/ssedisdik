@@ -1,11 +1,14 @@
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ssedisdik/src/common_widgets/bullet_widget.dart';
 import 'package:ssedisdik/src/common_widgets/custom_appbar_widget.dart';
+import 'package:ssedisdik/src/common_widgets/unit_kerja_widget.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/home/documents_categories_controller.dart';
+import 'package:ssedisdik/src/features/authentication/controllers/unit_kerja_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/document_categories_widget.dart';
 
 class UploadScreen extends StatelessWidget {
@@ -17,7 +20,10 @@ class UploadScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     Get.put<DocCategoriesController>(DocCategoriesController());
+    Get.put<UnitKerjaController>(UnitKerjaController());
+
     final docCategoriesController = Get.find<DocCategoriesController>();
+    final unitKerjaController = Get.find<UnitKerjaController>();
 
     return Scaffold(
       body: ColorfulSafeArea(
@@ -64,74 +70,16 @@ class UploadScreen extends StatelessWidget {
                   left: tHomePadding, right: tHomePadding, top: tHomePadding),
               child: Column(
                 children: [
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(tDetailTitle,
-                          style: txtTheme.displayLarge?.copyWith(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
+                  // -- Rules
+                  // Align(
+                  //     alignment: Alignment.topLeft,
+                  //     child: Text(tUploadTitle,
+                  //         style: txtTheme.displayLarge?.copyWith(
+                  //             fontSize: 18, fontWeight: FontWeight.bold))),
 
-                  // Documents Title
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(tPerihal,
-                          style:
-                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
-
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-
-                  TextField(
-                    keyboardType: TextInputType.multiline,
-                    style: txtTheme.displaySmall?.copyWith(fontSize: 14),
-                    maxLines:
-                        1, // Set maxLines ke null agar tidak terbatas ke bawah
-                    decoration: InputDecoration(
-                      filled: true,
-                      hintText: "e-000/XX.0000 / XXXX / 00000",
-                      fillColor: Colors.grey.shade300,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
-                  ),
-                  // Ends of Documents Title
-
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-
-                  // -- Documents Categories
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(tCategories,
-                              style: txtTheme.displayLarge
-                                  ?.copyWith(fontSize: 14))),
-                      CategoryDropdownButton(
-                          categories: docCategoriesController.categories)
-                    ],
-                  ),
-                  // -- Ends of Documents Categories
-                  const SizedBox(
-                    height: 5.0,
-                  ),
-
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(tUploadTitle,
-                          style: txtTheme.displayLarge?.copyWith(
-                              fontSize: 18, fontWeight: FontWeight.bold))),
-
-                  const SizedBox(
-                    height: 5.0,
-                  ),
+                  // const SizedBox(
+                  //   height: 10.0,
+                  // ),
 
                   Container(
                     padding: const EdgeInsets.all(7.0),
@@ -161,12 +109,184 @@ class UploadScreen extends StatelessWidget {
                           ],
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(top: 8.0, left: 10.0),
-                          // child: Text("Dokumen harus berformat PDF. n/ Lokasi TTE pada dokumen telah ditandai dengan hastag(#) n/ Jika ada dua TTE dalam satu halaman, maka dibedakan dengan jumlah hastag(#). Contoh: # dan ##.",),
+                          padding: EdgeInsets.only(top: 8.0, left: 6.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(),
+                                child: BulletParagraph(
+                                  text: tBullet1,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: BulletParagraph(
+                                  text: tBullet2,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: BulletParagraph(
+                                  text: tBullet3,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: BulletParagraph(
+                                  text: tBullet4,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: BulletParagraph(
+                                  text: tBullet5,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: BulletParagraph(
+                                  text: tBullet6,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: BulletParagraph(
+                                  text: tBullet7,
+                                ),
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),
                   ),
+                  // -- Ends of Rules
+
+                  const SizedBox(
+                    height: tHomePadding,
+                  ),
+
+                  // -- Choose File
+                  Container(
+                    height: size.height * 0.04,
+                    width: size.width,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      color: Color.fromARGB(237, 238, 238, 238),
+                    ),
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: buttonColor2,
+                            elevation: 0.0, // Remove button shadow
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20.0),
+                              bottomLeft: Radius.circular(20.0),
+                            )),
+                          ),
+                          child: const Text('Pilih file',
+                              style: TextStyle(color: Colors.black)),
+                        ),
+                        const SizedBox(
+                            width:
+                                8.0), // Add spacing between the button and container
+                        const Text(
+                          'Text inside the container',
+                          style: TextStyle(color: Colors.black),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ],
+                    ),
+                  ),
+                  // -- Ends of Choose File
+
+                  const SizedBox(
+                    height: tHomePadding,
+                  ),
+
+                  // -- Documents Title
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(tDetailTitle,
+                          style: txtTheme.displayLarge?.copyWith(
+                              fontSize: 18, fontWeight: FontWeight.bold))),
+
+                  // -- Ends of Documents Title
+
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+
+                  // -- Documents Detail - Perihal
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(tPerihal,
+                          style:
+                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
+
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+
+                  TextField(
+                    keyboardType: TextInputType.multiline,
+                    style: txtTheme.displaySmall?.copyWith(fontSize: 14),
+                    maxLines:
+                        1, // Set maxLines ke null agar tidak terbatas ke bawah
+                    decoration: InputDecoration(
+                      filled: true,
+                      hintText: "e-000/XX.0000 / XXXX / 00000",
+                      fillColor: Colors.grey.shade300,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                  ),
+                  // -- Ends of Documents Detail - Perihal
+
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+
+                  // -- Documents Detail - Categories
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(tCategories,
+                              style: txtTheme.displayLarge
+                                  ?.copyWith(fontSize: 14))),
+                      CategoryDropdownButton(
+                          categories: docCategoriesController.categories)
+                    ],
+                  ),
+                  // -- Ends of Documents Detail - Categories
+
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+
+                  // -- Documents Detail - Perihal
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(tDocumentOrigin,
+                          style:
+                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
+
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+
+                  UnitKerjaButton(units: unitKerjaController.unitsKerja)
+                  // -- Ends of Documents Detail - Perihal
                 ],
               ),
             )

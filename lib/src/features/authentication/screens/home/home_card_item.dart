@@ -14,8 +14,8 @@ class _ItemCardState extends State<ItemCard> {
     return Container(
       height: size.height * 0.2,
       width: 50,
-      margin: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 10),
+      decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
             BoxShadow(color: Colors.grey, blurRadius: 10, offset: Offset(0, 10))
