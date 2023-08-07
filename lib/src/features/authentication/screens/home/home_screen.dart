@@ -12,8 +12,14 @@ import 'package:ssedisdik/src/features/authentication/screens/home/home_carousel
 import 'package:ssedisdik/src/features/authentication/screens/home/home_header_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
@@ -110,7 +116,7 @@ class HomePage extends StatelessWidget {
                 GetBuilder<DocumentsController>(
                   builder: (controller) {
                     return SizedBox(
-                      height: 300,
+                      height: size.height,
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: controller.documentsList.length,

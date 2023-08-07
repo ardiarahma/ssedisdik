@@ -17,9 +17,9 @@ class _CategoryDropdownButtonState extends State<CategoryDropdownButton> {
     Size size = MediaQuery.of(context).size;
     final txtTheme = Theme.of(context).textTheme;
     return Container(
-      width: size.width * 0.6,
+      width: size.width,
       decoration: BoxDecoration(
-          color: Colors.grey.shade300,
+          color: Color.fromARGB(237, 238, 238, 238),
           borderRadius: BorderRadius.circular(20.0)),
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: InputDecorator(

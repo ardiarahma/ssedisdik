@@ -11,9 +11,14 @@ import 'package:ssedisdik/src/features/authentication/controllers/home/documents
 import 'package:ssedisdik/src/features/authentication/controllers/unit_kerja_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/document_categories_widget.dart';
 
-class UploadScreen extends StatelessWidget {
+class UploadScreen extends StatefulWidget {
   const UploadScreen({super.key});
 
+  @override
+  State<UploadScreen> createState() => _UploadScreenState();
+}
+
+class _UploadScreenState extends State<UploadScreen> {
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
@@ -242,7 +247,7 @@ class UploadScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       filled: true,
                       hintText: "e-000/XX.0000 / XXXX / 00000",
-                      fillColor: Colors.grey.shade300,
+                      fillColor: Color.fromARGB(237, 238, 238, 238),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide.none,
@@ -256,25 +261,43 @@ class UploadScreen extends StatelessWidget {
                   ),
 
                   // -- Documents Detail - Categories
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(tCategories,
-                              style: txtTheme.displayLarge
-                                  ?.copyWith(fontSize: 14))),
-                      CategoryDropdownButton(
-                          categories: docCategoriesController.categories)
-                    ],
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(tCategories,
+                          style:
+                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
+
+                  const SizedBox(
+                    height: 5.0,
                   ),
+
+                  CategoryDropdownButton(
+                      categories: docCategoriesController.categories),
                   // -- Ends of Documents Detail - Categories
 
                   const SizedBox(
                     height: 5.0,
                   ),
 
-                  // -- Documents Detail - Perihal
+                  // -- Documents Detail - Asal Dokumen
+                  Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(tDocumentOrigin,
+                          style:
+                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
+
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+
+                  UnitKerjaButton(units: unitKerjaController.unitsKerja),
+                  // -- Ends of Documents Detail - Asal Dokumen
+
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+
+                  // -- Send To
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tDocumentOrigin,
@@ -286,7 +309,7 @@ class UploadScreen extends StatelessWidget {
                   ),
 
                   UnitKerjaButton(units: unitKerjaController.unitsKerja)
-                  // -- Ends of Documents Detail - Perihal
+                  // -- Ends of Send To
                 ],
               ),
             )

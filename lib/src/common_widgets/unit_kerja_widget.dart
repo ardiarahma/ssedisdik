@@ -18,7 +18,7 @@ class _UnitKerjaButtonState extends State<UnitKerjaButton> {
     return Container(
       width: size.width,
       decoration: BoxDecoration(
-          color: Colors.grey.shade300,
+          color: Color.fromARGB(237, 238, 238, 238),
           borderRadius: BorderRadius.circular(20.0)),
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: InputDecorator(
