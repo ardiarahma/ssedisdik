@@ -37,9 +37,9 @@ class ProfilePage extends StatelessWidget {
                 backgroundColor: primaryColor,
                 size: Size(double.maxFinite, double.infinity)),
             Padding(
-              padding: const EdgeInsets.only(left: tHomePadding, right: tHomePadding),
+              padding: const EdgeInsets.only(
+                  left: tHomePadding, right: tHomePadding),
               child: Column(
-                
                 children: [
                   // -- User Name
                   Align(
@@ -56,33 +56,132 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   // -- Ends of User Name
-            
+
                   const SizedBox(height: 80),
-            
+
+                  // -- Edit Profile Content
                   Container(
-                    height: size.height * 0.05,
+                    height: size.height * 0.06,
                     width: size.width,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      color: Color.fromARGB(237, 238, 238, 238),
+                    child: Material(
+                      elevation: 4.0,
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text("Pembaruan Data",
+                                style: txtTheme.displayLarge?.copyWith(
+                                    fontSize: 18, fontWeight: FontWeight.bold)),
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.arrow_right_rounded,
+                                size: 35.0,
+                              ))
+                        ],
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ),
+                  // -- Ends of Edit Profile Content
+
+                  const SizedBox(height: tHomePadding),
+
+                  // -- Edit Profile Content
+                  Container(
+                    height: size.height * 0.06,
+                    width: size.width,
+                    child: Material(
+                      elevation: 4.0,
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text("Atur Sidik Jari",
+                                style: txtTheme.displayLarge?.copyWith(
+                                    fontSize: 18, fontWeight: FontWeight.bold)),
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.arrow_right_rounded,
+                                size: 35.0,
+                              ))
+                        ],
+                      ),
+                    ),
+                  ),
+                  // -- Ends of Edit Profile Content
+
+                  const SizedBox(height: 50.0),
+
+                  // -- Detail Profile
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: tHomePadding, right: tHomePadding),
+                    child: Column(
                       children: [
-                        Text("ssssdvs"),
-                        ElevatedButton.icon(onPressed: () {
-                          // do something here
-                        }, icon: Icon(Icons.arrow_right_rounded), label: Text(" "))
+                        Text("Nomor Induk Kependudukan",
+                            textAlign: TextAlign.left,
+                            style: txtTheme.displayLarge?.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: tHomePadding),
+                        Text("xxxxxxxx",
+                            textAlign: TextAlign.left,
+                            style:
+                                txtTheme.displayLarge?.copyWith(fontSize: 14)),
+                        const SizedBox(height: tHomePadding),
+                        Text("Nomor Telepon",
+                            textAlign: TextAlign.left,
+                            style: txtTheme.displayLarge?.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: tHomePadding),
+                        Text("08221*******",
+                            textAlign: TextAlign.left,
+                            style:
+                                txtTheme.displayLarge?.copyWith(fontSize: 14)),
+                        const SizedBox(height: tHomePadding),
+                        Text("Alamat Email",
+                            textAlign: TextAlign.left,
+                            style: txtTheme.displayLarge?.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: tHomePadding),
+                        Text("nura*****@gmail.com",
+                            style:
+                                txtTheme.displayLarge?.copyWith(fontSize: 14)),
+                        const SizedBox(height: tHomePadding),
+                        Text("Unit Kerja",
+                            textAlign: TextAlign.left,
+                            style: txtTheme.displayLarge?.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: tHomePadding),
+                        Text("Suku Dinas Pendidikan Wilayah I Kota Adm. Jakarta Pusat",
+                        textAlign: TextAlign.center,
+                            softWrap: true,
+                            style:
+                                txtTheme.displayLarge?.copyWith(fontSize: 14)),
+                        const SizedBox(height: tHomePadding),
+                        Text("Jabatan",
+                            softWrap: true,
+                            textAlign: TextAlign.left,
+                            style: txtTheme.displayLarge?.copyWith(
+                                fontSize: 16, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: tHomePadding),
+                        Text("Staf",
+                            textAlign: TextAlign.left,
+                            style:
+                                txtTheme.displayLarge?.copyWith(fontSize: 14)),
+                        const SizedBox(height: tHomePadding),
                       ],
                     ),
                   )
-                  // LoginHeaderWidget(size: size),
-                  // const LoginForm(),
-                  // Positioned(
-                  //     bottom: 0,
-                  //     left: 0,
-                  //     right: 0,
-                  //     child: Container(child: const LoginFooterWidget()))
+                  // -- Ends of Detail Profile
                 ],
               ),
             )
