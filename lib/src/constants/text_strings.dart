@@ -66,6 +66,13 @@ const String tPerihal = "Nomor / Perihal / No. e-Office";
 const String tCategories = "Kategori Dokumen";
 const String tDocumentRules = "Ketentuan Dokumen";
 const String tDocumentOrigin = "Asal Dokumen";
+const String tDocumentDestination = "Tujuan Dokumen";
+const String tDocumentSigner = "Pejabat TTE";
+const String tDocumentPageFiles = "Halaman";
+const String tDocumentPageOrientation = "Posisi";
+const String tDocumentPageType = "Jenis";
+const String tDocumentPageTag = "Tanda Tag";
+
 
 // -- Home Page - Upload Documents - Rule
 const String tBullet1 = "Dokumen harus berformat PDF.";

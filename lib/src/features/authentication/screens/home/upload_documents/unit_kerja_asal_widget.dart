@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ssedisdik/src/features/authentication/models/unit_kerja_model.dart';
 
-class UnitKerjaButton extends StatefulWidget {
+class UnitKerjaAsalButton extends StatefulWidget {
   final List<UnitKerjaModel> units;
-  const UnitKerjaButton({super.key, required this.units});
+  const UnitKerjaAsalButton({super.key, required this.units});
 
   @override
-  State<UnitKerjaButton> createState() => _UnitKerjaButtonState();
+  State<UnitKerjaAsalButton> createState() => _UnitKerjaAsalButtonState();
 }
 
-class _UnitKerjaButtonState extends State<UnitKerjaButton> {
+class _UnitKerjaAsalButtonState extends State<UnitKerjaAsalButton> {
   UnitKerjaModel? selectedUnitKerja;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _UnitKerjaButtonState extends State<UnitKerjaButton> {
               selectedUnitKerja = newValue;
             });
           },
-          hint: const Text(' -- Pilih Unit Kerja -- '),
+          hint: const Text(' -- Pilih Unit Kerja Asal -- '),
         ),
       ),
     );
