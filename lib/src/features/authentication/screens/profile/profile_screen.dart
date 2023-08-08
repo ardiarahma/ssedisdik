@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
+import 'package:ssedisdik/src/features/authentication/screens/profile/profile_edit_screen.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
@@ -76,12 +78,14 @@ class ProfilePage extends StatelessWidget {
                                 style: txtTheme.displayLarge?.copyWith(
                                     fontSize: 18, fontWeight: FontWeight.bold)),
                           ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.arrow_right_rounded,
-                                size: 35.0,
-                              ))
+                          InkWell(
+                            onTap: () =>
+                                Get.to(() => const ProfileEditScreen()),
+                            child: Icon(
+                              Icons.arrow_right_rounded,
+                              size: 35.0,
+                            ),
+                          )
                         ],
                       ),
                     ),
@@ -90,7 +94,7 @@ class ProfilePage extends StatelessWidget {
 
                   const SizedBox(height: tHomePadding),
 
-                  // -- Edit Profile Content
+                  // -- Fingerprint Settings
                   Container(
                     height: size.height * 0.06,
                     width: size.width,
@@ -117,7 +121,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // -- Ends of Edit Profile Content
+                  // -- Ends of Fingerprint Settings
 
                   const SizedBox(height: 50.0),
 
@@ -161,8 +165,9 @@ class ProfilePage extends StatelessWidget {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text("Suku Dinas Pendidikan Wilayah I Kota Adm. Jakarta Pusat",
-                        textAlign: TextAlign.center,
+                        Text(
+                            "Suku Dinas Pendidikan Wilayah I Kota Adm. Jakarta Pusat",
+                            textAlign: TextAlign.center,
                             softWrap: true,
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),

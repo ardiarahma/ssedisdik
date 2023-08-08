@@ -5,7 +5,7 @@ import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/upload_document_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/validation_page/doc_page.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_screen.dart';
-import 'package:ssedisdik/src/features/authentication/screens/profile/profile_page.dart';
+import 'package:ssedisdik/src/features/authentication/screens/profile/profile_screen.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});

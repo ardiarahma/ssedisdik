@@ -83,4 +83,12 @@ const String tBullet5 = "Khusus untuk multi file (unggah lebih dari satu file), 
 const String tBullet6 = "Maksimal unggah 500 dokumen dalam sekali proses";
 const String tBullet7 = "Petunjuk teknis set TTE pada dokumen sebelum diunggah dapat dilihat pada video ini.";
 
+// -- Profile Page - Edit Profile
+const String tNamaLengkap = "Nama Lengkap";
+const String tNomorIndukKependudukan = "Nomor Induk Kependudukan";
+const String tNomorHandphone = "Nomor Handphone";
+const String tEmail = "Email";
+const String tUnitKerja = "Unit Kerja";
+const String tJabatan = "Jabatan";
+
 

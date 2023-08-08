@@ -54,7 +54,7 @@ class LoginForm extends StatelessWidget {
                       child: ElevatedButton.icon(
                         style: ButtonStyle(
                             shape: MaterialStatePropertyAll(
-                                RoundedRectangleBorder(
+                                RoundedRectangleBorder( 
                                     borderRadius: BorderRadius.circular(10)))),
                         onPressed: () => Get.to(() => MyDrawer()),
                         icon: Icon(Icons.login),
@@ -75,7 +75,7 @@ class LoginForm extends StatelessWidget {
                             height: 45,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: primaryColor,
+                              color: buttonColor,
                               boxShadow: const [
                                 BoxShadow(
                                     color: Colors.grey,

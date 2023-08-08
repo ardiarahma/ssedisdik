@@ -35,12 +35,11 @@ class _UploadScreenState extends State<UploadScreen> {
     final unitKerjaController = Get.find<UnitKerjaController>();
     final pejabatController = Get.find<PejabatController>();
 
-    return Scaffold(
-      body: ColorfulSafeArea(
-        color: primaryColor,
-        overflowRules: const OverflowRules.only(top: false, bottom: true),
-        // bottom: true,
-        child: SingleChildScrollView(
+    return ColorfulSafeArea(
+      color: primaryColor,
+      overflowRules: const OverflowRules.only(top: false, bottom: true),
+      child: Scaffold(
+        body: SingleChildScrollView(
             child: Column(
           children: [
             // -- App Bar
@@ -60,20 +59,17 @@ class _UploadScreenState extends State<UploadScreen> {
                   child: Center(
                     child: Text(
                       tUploadTitle,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium
-                          ?.copyWith(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
               ],
             ),
             // -- End of AppBar
-
+      
             // -- Content Start
             Container(
               padding: const EdgeInsets.only(
@@ -99,12 +95,10 @@ class _UploadScreenState extends State<UploadScreen> {
                               color: Colors.red,
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 7.0, top: 2.0),
+                              padding: const EdgeInsets.only(left: 7.0, top: 2.0),
                               child: Text(tDocumentRules,
                                   style: txtTheme.displayLarge?.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold)),
+                                      fontSize: 16, fontWeight: FontWeight.bold)),
                             )
                           ],
                         ),
@@ -163,11 +157,11 @@ class _UploadScreenState extends State<UploadScreen> {
                     ),
                   ),
                   // -- Ends of Rules
-
+      
                   const SizedBox(
                     height: tHomePadding,
                   ),
-
+      
                   // -- Upload Documents Title
                   Align(
                       alignment: Alignment.topLeft,
@@ -175,11 +169,11 @@ class _UploadScreenState extends State<UploadScreen> {
                           style: txtTheme.displayLarge?.copyWith(
                               fontSize: 18, fontWeight: FontWeight.bold))),
                   // -- Ends of Upload Documents Title
-
+      
                   const SizedBox(
                     height: 10.0,
                   ),
-
+      
                   // -- Choose File
                   Container(
                     height: size.height * 0.04,
@@ -217,11 +211,11 @@ class _UploadScreenState extends State<UploadScreen> {
                     ),
                   ),
                   // -- Ends of Choose File
-
+      
                   const SizedBox(
                     height: tHomePadding,
                   ),
-
+      
                   // -- Documents Detail Title
                   Align(
                       alignment: Alignment.topLeft,
@@ -229,22 +223,21 @@ class _UploadScreenState extends State<UploadScreen> {
                           style: txtTheme.displayLarge?.copyWith(
                               fontSize: 18, fontWeight: FontWeight.bold))),
                   // -- Ends of Documents Detail Title
-
+      
                   const SizedBox(
                     height: 5.0,
                   ),
-
+      
                   // -- Documents Detail - Perihal
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tPerihal,
-                          style:
-                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
-
+                          style: txtTheme.displayLarge?.copyWith(fontSize: 14))),
+      
                   const SizedBox(
                     height: 5.0,
                   ),
-
+      
                   TextField(
                     keyboardType: TextInputType.multiline,
                     style: txtTheme.displaySmall?.copyWith(fontSize: 14),
@@ -261,91 +254,86 @@ class _UploadScreenState extends State<UploadScreen> {
                     ),
                   ),
                   // -- Ends of Documents Detail - Perihal
-
+      
                   const SizedBox(
                     height: 10.0,
                   ),
-
+      
                   // -- Documents Detail - Categories
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tCategories,
-                          style:
-                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
-
+                          style: txtTheme.displayLarge?.copyWith(fontSize: 14))),
+      
                   const SizedBox(
                     height: 5.0,
                   ),
-
+      
                   CategoryDropdownButton(
                       categories: docCategoriesController.categories),
                   // -- Ends of Documents Detail - Categories
-
+      
                   const SizedBox(
                     height: 5.0,
                   ),
-
+      
                   // -- Documents Detail - Asal Dokumen
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tDocumentOrigin,
-                          style:
-                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
-
+                          style: txtTheme.displayLarge?.copyWith(fontSize: 14))),
+      
                   const SizedBox(
                     height: 5.0,
                   ),
-
+      
                   UnitKerjaAsalButton(units: unitKerjaController.unitsKerja),
                   // -- Ends of Documents Detail - Asal Dokumen
-
+      
                   const SizedBox(
                     height: 10.0,
                   ),
-
+      
                   // -- Documents Detail - Tujuan Dokumen
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tDocumentDestination,
-                          style:
-                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
-
+                          style: txtTheme.displayLarge?.copyWith(fontSize: 14))),
+      
                   const SizedBox(
                     height: 5.0,
                   ),
-
+      
                   UnitKerjaTujuanButton(units: unitKerjaController.unitsKerja),
                   // -- Ends of Documents Detail - Tujuan Dokumen
-
+      
                   const SizedBox(
                     height: 10.0,
                   ),
-
+      
                   // -- Documents Detail -- Pejabat TTE
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tDocumentSigner,
-                          style:
-                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
-
+                          style: txtTheme.displayLarge?.copyWith(fontSize: 14))),
+      
                   const SizedBox(
                     height: 5.0,
                   ),
                   PejabatPenandatanganButton(
                       pejabats: pejabatController.pejabats),
                   // -- Ends of Documents Detail -- Pejabat TTE
-
+      
                   const SizedBox(
                     height: 10.0,
                   ),
-
+      
                   // -- Documents Detail -- Pejabat TTE
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tDocumentSigner,
-                          style:
-                              txtTheme.displayLarge?.copyWith(fontSize: 14))),
-
+                          style: txtTheme.displayLarge?.copyWith(fontSize: 14))),
+      
                   const SizedBox(
                     height: 5.0,
                   ),
