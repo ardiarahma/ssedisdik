@@ -45,6 +45,7 @@ dependencies:
   wave: ^0.2.2
   carousel_slider: ^4.2.1
   colorful_safe_area: ^1.0.0
+  number_inc_dec: ^0.8.0
 
 dev_dependencies:
   flutter_test:
