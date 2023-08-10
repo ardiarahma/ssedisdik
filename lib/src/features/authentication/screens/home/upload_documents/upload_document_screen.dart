@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 import 'package:ssedisdik/src/common_widgets/bullet_widget.dart';
 import 'package:ssedisdik/src/common_widgets/custom_appbar_widget.dart';
 import 'package:ssedisdik/src/common_widgets/number_inc_dec_widget.dart';
-import 'package:ssedisdik/src/features/authentication/controllers/pejabat_controller%20copy.dart';
+import 'package:ssedisdik/src/features/authentication/controllers/orientation_controller.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/pejabat_controller.dart';
+import 'package:ssedisdik/src/features/authentication/controllers/type_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/pejabat_tte_widget.dart';
-import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/position_widget.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/orientation_widget.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/type_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/unit_kerja_asal_widget.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
@@ -33,12 +35,14 @@ class _UploadScreenState extends State<UploadScreen> {
     Get.put<DocCategoriesController>(DocCategoriesController());
     Get.put<UnitKerjaController>(UnitKerjaController());
     Get.put<PejabatController>(PejabatController());
-    Get.put<PositionController>(PositionController());
+    Get.put<OrientationController>(OrientationController());
+    Get.put<TypeController>(TypeController());
 
     final docCategoriesController = Get.find<DocCategoriesController>();
     final unitKerjaController = Get.find<UnitKerjaController>();
     final pejabatController = Get.find<PejabatController>();
-    final positionController = Get.find<PositionController>();
+    final orientationController = Get.find<OrientationController>();
+    final typeController = Get.find<TypeController>();
 
     return ColorfulSafeArea(
       color: primaryColor,
@@ -345,45 +349,116 @@ class _UploadScreenState extends State<UploadScreen> {
 
                   // -- Documents Detail -- Halaman
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(tDocumentPageFiles,
-                                  style: txtTheme.displayLarge
-                                      ?.copyWith(fontSize: 14))),
-                          const SizedBox(
-                            height: 5.0,
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(tDocumentPageFiles,
+                                      style: txtTheme.displayLarge
+                                          ?.copyWith(fontSize: 14))),
+                              const SizedBox(
+                                height: 5.0,
+                              ),
+                              NumberInputIncrementDecrement()
+                            ],
                           ),
-                          NumberInputIncrementDecrement()
+                          const SizedBox(
+                            width: 5.0,
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(tDocumentPageOrientation,
+                                      style: txtTheme.displayLarge
+                                          ?.copyWith(fontSize: 14))),
+                              const SizedBox(
+                                height: 5.0,
+                              ),
+                              OrientationDropdownButton(
+                                  orientations:
+                                      orientationController.orientations)
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 5.0,
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(tDocumentPageType,
+                                      style: txtTheme.displayLarge
+                                          ?.copyWith(fontSize: 14))),
+                              const SizedBox(
+                                height: 5.0,
+                              ),
+                              TypeDropdownButton(types: typeController.types)
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 5.0,
+                          ),
+                          Column(
+                            children: [
+                              Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(tDocumentPageTag,
+                                      style: txtTheme.displayLarge
+                                          ?.copyWith(fontSize: 14))),
+                              const SizedBox(
+                                height: 5.0,
+                              ),
+                              Container(
+                                width: size.width * 0.18,
+                                height: size.height * 0.05,
+                                child: TextField(
+                                  style: txtTheme.displaySmall
+                                      ?.copyWith(fontSize: 14),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    hintText: "Isi Tag",
+                                    contentPadding: const EdgeInsets.only(left: 20.0),
+                                    fillColor:
+                                        const Color.fromARGB(237, 238, 238, 238),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ],
-                      )
+                      ),
+                      SizedBox(
+                        width: size.width * 0.15,
+                        height: size.height * 0.05,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                buttonColor, // Remove button shadow
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                          ),
+                          child: const Icon(Icons.add),
+                        ),
+                      ),
                     ],
                   ),
                   // -- Ends of Documents Detail -- Halaman
 
-                  // -- Documents Detail -- Posisi
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     Column(
-                  //       children: [
-                  //         Align(
-                  //             alignment: Alignment.topLeft,
-                  //             child: Text(tDocumentPageFiles,
-                  //                 style: txtTheme.displayLarge
-                  //                     ?.copyWith(fontSize: 14))),
-                  //         const SizedBox(
-                  //           height: 5.0,
-                  //         ),
-                  //         PositionDropdownButton(positions)
-                  //       ],
-                  //     )
-                  //   ],
-                  // )
-                  // -- Ends of Documents Detail -- Halaman
+                  const SizedBox(
+                    height: 100.0,
+                  ),
                 ],
               ),
             )
