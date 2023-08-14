@@ -46,6 +46,11 @@ dependencies:
   carousel_slider: ^4.2.1
   colorful_safe_area: ^1.0.0
   number_inc_dec: ^0.8.0
+  dio: ^5.3.2
+  flutter_secure_storage: ^8.0.0
+  json_annotation: ^4.8.1
+  passwordfield: ^0.2.0
+  local_auth: ^2.1.6
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +62,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

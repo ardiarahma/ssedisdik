@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/upload_document_screen.dart';
+import 'package:ssedisdik/src/features/authentication/screens/login/login_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/validation_page/doc_page.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/profile/profile_screen.dart';
+import 'package:ssedisdik/src/utils/api_service.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -16,6 +18,14 @@ class MyDrawer extends StatefulWidget {
 
 class _MyDrawerState extends State<MyDrawer> {
   final List<ScreenHiddenDrawer> _pages = [];
+  final ApiService apiService = ApiService();
+
+  void logout() {
+    // Clear authentication data, such as token
+    // apiService.clearAuthToken();
+
+    Get.offAll(LoginScreen()); // Navigate back to LoginScreen
+  }
 
   @override
   void initState() {

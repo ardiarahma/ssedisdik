@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ssedisdik/src/features/authentication/models/pejabat_model.dart';
-import 'package:ssedisdik/src/features/authentication/models/unit_kerja_model.dart';
 
 class PejabatPenandatanganButton extends StatefulWidget {
   final List<PejabatModel> pejabats;
