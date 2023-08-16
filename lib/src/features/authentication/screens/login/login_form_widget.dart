@@ -45,7 +45,6 @@ class _LoginFormState extends State<LoginForm> {
       final accessToken = loginResponse.accessToken;
 
       // Store accessToken securely
-
       apiService.setAuthToken(accessToken);
       Get.off(MyDrawer());
       print('login successful');

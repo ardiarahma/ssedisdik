@@ -1,6 +1,9 @@
 // ignore_for_file: unused_local_variable
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
@@ -20,6 +23,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
@@ -30,8 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           // -- Header Start
           HomeHeaderWidget(
-            size: Size(double.infinity, size.height * 0.15),
-          ),
+              size: Size(double.infinity, size.height * 0.15)),
           // -- End of Header
 
           const SizedBox(height: tHomePadding),

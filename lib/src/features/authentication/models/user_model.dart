@@ -43,6 +43,30 @@ class User {
     required this.no,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'nik ': nik,
+      'noHp': noHP,
+      'email': email,
+      'photo': photo,
+      'group': group,
+      'position': position,
+      'level': level,
+      'token': token,
+      'code': code,
+      'isOnline': isOnline,
+      'banned': banned,
+      'createdAt': createdAt,
+      'createdBy': createdBy,
+      'updatedAt': updatedAt,
+      'updatedBy': updatedBy,
+      'tte': tte,
+      'spesimen': spesimen,
+      'no': no,
+    };
+  }
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
