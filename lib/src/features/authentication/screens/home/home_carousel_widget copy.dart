@@ -7,20 +7,18 @@ import 'package:ssedisdik/src/features/authentication/models/response/home_carou
 import 'package:ssedisdik/src/utils/api_service.dart';
 
 class HomeCarouselWidget extends StatefulWidget {
-  const HomeCarouselWidget({super.key, required this.carouselData, required this.refreshCallback});
-  final List<String> carouselData;
-  final VoidCallback refreshCallback;
+  const HomeCarouselWidget({super.key});
 
   @override
   State<HomeCarouselWidget> createState() => _HomeCarouselWidgetState();
 }
 
 class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
-  Map<int, String> statusMap = {
-    1: "Terkirim",
-    2: "Diterima",
-    3: "Ditolak",
-    4: "Draft",
+  Map<String, String> statusMap = {
+    "1": "Terkirim",
+    "2": "Diterima",
+    "3": "Ditolak",
+    "4": "Draft",
   };
 
   List<MapEntry<String, String>> carouselItems = [];
@@ -34,25 +32,22 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
   }
 
   Future<void> fetchData() async {
-    try {
-      final response = await ApiService().fetchCarouselData();
-      final homeCarouselResponse = HomeCarouselResponse.fromJson(response);
+      try {
+        final response = await ApiService().fetchCarouselData();
+        final homeCarouselResponse = HomeCarouselResponse.fromJson(response);
 
-      carouselItems = homeCarouselResponse.docResults.entries.map((entry) {
-        final statusNumeric = int.parse(entry.key);
-        print("Status Numeric: $statusNumeric");
-        final statusText = statusMap[statusNumeric] ?? 'Unknown Status';
-        print("Status Text: $statusText");
-        final count = entry.value.toString();
-        print("Count: $count");
-        return MapEntry(statusText, count);
-      }).toList();
+        carouselItems = homeCarouselResponse.docResults.entries.map((entry) {
+          final statusNumeric = int.parse(entry.key);
+          final statusText = statusMap[statusNumeric] ?? 'Unknown Status';
+          final count = entry.value.toString();
+          return MapEntry(statusText, count);
+        }).toList();
 
-      setState(() {});
-    } catch (error) {
-      // Handle error
+        setState(() {});
+      } catch (error) {
+        // Handle error
+      }
     }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,40 +60,41 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
           height: size.height * 0.2,
           width: double.infinity,
           child: CarouselSlider(
-            items: carouselItems.map((item) {
-              return Container(
-                padding: EdgeInsets.symmetric(vertical: 45.0),
-                margin: const EdgeInsets.symmetric(
-                    vertical: tHomePadding, horizontal: 5),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: primaryColor,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 1,
-                          blurRadius: 3,
-                          offset: Offset(1, 1))
-                    ]),
-                child: Column(
-                  children: [
-                    Text(
-                      item.key, // Status text
-                      style: txtTheme.displayMedium
-                          ?.copyWith(color: Colors.white, fontSize: 18),
-                    ),
-                    Text(
-                      item.value, // Count
-                      style: txtTheme.displayLarge?.copyWith(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
+            items: [
+              for (int i = 0; i < carouselItems.length; i++)
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 45.0),
+                  margin: const EdgeInsets.symmetric(
+                      vertical: tHomePadding, horizontal: 5),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 1,
+                            blurRadius: 3,
+                            offset: Offset(1, 1))
+                      ]),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Status',
+                        style: txtTheme.displayMedium
+                            ?.copyWith(color: Colors.white, fontSize: 18),
+                      ),
+                      Text(
+                        '00000',
+                        style: txtTheme.displayLarge?.copyWith(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                )
+            ],
             options: CarouselOptions(
               onPageChanged: (index, reason) {
                 setState(() {

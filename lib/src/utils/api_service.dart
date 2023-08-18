@@ -11,12 +11,11 @@ class ApiService {
   static Dio _dio = Dio();
   final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
 
-  // -- Login 
+  // -- Login
   Future<LoginResponse> login(String email, String password) async {
     final token = await _secureStorage.read(key: 'token');
     try {
-      final response = await _dio.post(
-          '$baseUrl/login',
+      final response = await _dio.post('$baseUrl/login',
           data: {
             'email': email,
             'password': password,
@@ -28,23 +27,40 @@ class ApiService {
       if (response.statusCode == 200) {
         final loginResponse = LoginResponse.fromJson(response.data);
         setAuthToken(loginResponse.accessToken);
-        _secureStorage.write(key: 'userData', value: jsonEncode(loginResponse.user));
+        _secureStorage.write(
+            key: 'userData', value: jsonEncode(loginResponse.user));
         return loginResponse;
       } else {
         throw Exception('Login failed');
-        
       }
     } catch (error) {
       throw Exception('Login error: $error');
     }
   }
 
-  void setAuthToken(String token){
+  Future<Map<String, dynamic>> fetchCarouselData() async {
+    final token = await _secureStorage.read(key: 'token');
+    try {
+      final response = await _dio.get(
+        '$baseUrl/document-recap',
+        options: Options(
+          headers: {'Authorization': 'Bearer $token'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw Exception('Failed to fetch carousel data');
+      }
+    } catch (error) {
+      throw Exception('Fetch carousel data error: $error');
+    }
+  }
+
+  void setAuthToken(String token) {
     _secureStorage.write(key: 'authToken', value: token);
     _dio.interceptors.add(AuthInterceptor(token));
   }
-
-
 }
 
 class AuthInterceptor extends Interceptor {
