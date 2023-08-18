@@ -62,12 +62,12 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          height: size.height * 0.2,
+          height: size.height * 0.18,
           width: double.infinity,
           child: CarouselSlider(
             items: carouselItems.map((item) {
               return Container(
-                padding: EdgeInsets.symmetric(vertical: 45.0),
+                padding: EdgeInsets.symmetric(vertical: 32.0),
                 margin: const EdgeInsets.symmetric(
                     vertical: tHomePadding, horizontal: 5),
                 alignment: Alignment.center,

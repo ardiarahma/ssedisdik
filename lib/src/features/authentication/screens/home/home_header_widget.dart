@@ -34,7 +34,7 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
       });
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
@@ -56,32 +56,29 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                     image: const AssetImage(logoSseOnly),
                     height: widget.size.height * 0.5),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(tGreeting,
-                            style: txtTheme.displayMedium
-                                ?.copyWith(color: Colors.white, fontSize: 20)),
-                        Text(
-                          userData['name'],
-                          style: txtTheme.displayMedium
-                              ?.copyWith(color: Colors.white, fontSize: 20),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 4.0),
-                    Text(
-                      tGreetingSub,
-                      style: txtTheme.displaySmall?.copyWith(
-                        color: Colors.white.withOpacity(0.7),
-                        fontSize: 16,
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        tGreeting + userData['name'],
+                        style: txtTheme.displayMedium
+                            ?.copyWith(color: Colors.white, fontSize: 20),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 4.0),
+                      Text(
+                        tGreetingSub,
+                        style: txtTheme.displaySmall?.copyWith(
+                          color: Colors.white.withOpacity(0.7),
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
