@@ -11,6 +11,7 @@ import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/home/documents_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_list_widget.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_tabs_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_carousel_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_header_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -130,6 +131,12 @@ class _HomePageState extends State<HomePage> {
                   // -- End of Documents Title
 
                   const SizedBox(height: tHomePadding),
+
+                  // -- Tabs Categories
+                  DocumentsTabCategoriesWidget(),
+                  // -- Ends of Tabs Categories
+
+                  const SizedBox(height: 10.0),
 
                   // -- ListView Documents
                   GetBuilder<DocumentsController>(

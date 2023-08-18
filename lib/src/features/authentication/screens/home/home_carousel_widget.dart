@@ -17,10 +17,10 @@ class HomeCarouselWidget extends StatefulWidget {
 
 class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
   Map<int, String> statusMap = {
-    1: "Terkirim",
-    2: "Diterima",
-    3: "Ditolak",
-    4: "Draft",
+    1: "Dokumen Terkirim",
+    2: "Selesai TTE",
+    3: "Dokumen Ditolak",
+    4: "Draft Dokumen",
   };
 
   List<MapEntry<String, String>> carouselItems = [];
