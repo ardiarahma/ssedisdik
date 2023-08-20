@@ -1,3 +1,7 @@
+import 'group_model.dart';
+import 'level_model.dart';
+import 'position_model.dart';
+
 class User {
   final String id;
   final String name;
@@ -5,9 +9,9 @@ class User {
   final String noHP;
   final String email;
   final String photo;
-  final String group;
-  final String position;
-  final String level;
+  final Group group;
+  final Position position;
+  final Level level;
   final String token;
   final String code;
   final String isOnline;
@@ -51,9 +55,9 @@ class User {
       'noHp': noHP,
       'email': email,
       'photo': photo,
-      'group': group,
-      'position': position,
-      'level': level,
+      'group': group.toJson(),
+      'position': position.toJson(),
+      'level': level.toJson(),
       'token': token,
       'code': code,
       'isOnline': isOnline,
@@ -76,9 +80,9 @@ class User {
       noHP: json['noHP'],
       email: json['email'],
       photo: json['photo'],
-      group: json['group'],
-      position: json['position'],
-      level: json['level'],
+      group: Group.fromJson(json['group']),
+      position: Position.fromJson(json['position']),
+      level: Level.fromJson(json['level']),
       token: json['token'],
       code: json['code'],
       isOnline: json['isOnline'],

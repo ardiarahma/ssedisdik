@@ -67,18 +67,6 @@ class _MyDrawerState extends State<MyDrawer> {
           DocumentPage()),
     );
 
-    _pages.add(
-      new ScreenHiddenDrawer(
-          new ItemHiddenMenu(
-              name: "Keluar",
-              baseStyle: TextStyle(
-                color: Colors.white,
-              ),
-              colorLineSelected: Colors.lightBlue,
-              selectedStyle: TextStyle(color: Colors.white)),
-          HomePage()),
-    );
-
     super.initState();
   }
 

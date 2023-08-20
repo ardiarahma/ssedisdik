@@ -1,14 +1,54 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
-import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
+import 'package:ssedisdik/src/features/authentication/screens/login/login_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/profile/profile_edit_screen.dart';
+import 'package:ssedisdik/src/utils/api_service.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final ApiService apiService = ApiService();
+  final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+  Map<String, dynamic> userData = {};
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getUserData();
+  }
+
+  Future<void> _getUserData() async {
+    final userDataString = await _secureStorage.read(key: 'userData');
+    if (userDataString != null) {
+      setState(() {
+        userData = jsonDecode(userDataString);
+      });
+    }
+  }
+
+  void _handleLogout() async {
+    try {
+      await apiService.logout();
+      Get.off(LoginScreen());
+      print('logout successful');
+    } catch (error) {
+      print('logout unsuccessful');
+      throw Exception('Logout error: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +89,7 @@ class ProfilePage extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(tDefaultSize),
                       child: Text(
-                        "namanya siapa",
+                        userData['name'],
                         style: txtTheme.displayLarge?.copyWith(
                             color: Colors.white,
                             fontSize: 23,
@@ -136,7 +176,7 @@ class ProfilePage extends StatelessWidget {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text("xxxxxxxx",
+                        Text(userData['nik'] ?? "No Data",
                             textAlign: TextAlign.left,
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),
@@ -146,7 +186,7 @@ class ProfilePage extends StatelessWidget {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text("08221*******",
+                        Text(userData['noHp'],
                             textAlign: TextAlign.left,
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),
@@ -156,7 +196,7 @@ class ProfilePage extends StatelessWidget {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text("nura*****@gmail.com",
+                        Text(userData['email'],
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),
                         const SizedBox(height: tHomePadding),
@@ -165,8 +205,7 @@ class ProfilePage extends StatelessWidget {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text(
-                            "Suku Dinas Pendidikan Wilayah I Kota Adm. Jakarta Pusat",
+                        Text(userData['group']['name'],
                             textAlign: TextAlign.center,
                             softWrap: true,
                             style:
@@ -178,15 +217,40 @@ class ProfilePage extends StatelessWidget {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text("Staf",
+                        Text(userData['position']['name'],
                             textAlign: TextAlign.left,
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),
                         const SizedBox(height: tHomePadding),
                       ],
                     ),
-                  )
+                  ),
                   // -- Ends of Detail Profile
+
+                  const SizedBox(height: 5.0),
+
+                  // -- Logout Button
+                  Flexible(
+                    child: Container(
+                      height: 45,
+                      child: ElevatedButton.icon(
+                        style: ButtonStyle(
+                            shape: MaterialStatePropertyAll(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)))),
+                        onPressed: _handleLogout,
+                        icon: Icon(Icons.logout_rounded),
+                        label: Text(
+                          "Keluar",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium
+                              ?.copyWith(color: Colors.white, fontSize: 14),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // -- Ends of Logout Button
                 ],
               ),
             )
