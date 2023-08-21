@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:passwordfield/passwordfield.dart';
+import 'package:provider/provider.dart';
 import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
@@ -11,6 +12,7 @@ import 'package:ssedisdik/src/features/authentication/models/user_model.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
 import '../../../../constants/colors.dart';
+import '../../controllers/login/session_controller.dart';
 
 class LoginForm extends StatefulWidget {
   LoginForm({
@@ -37,7 +39,7 @@ class _LoginFormState extends State<LoginForm> {
     });
   }
 
-  Future<void> _login() async {
+  Future<void> _login(BuildContext context) async {
     final email = emailController.text;
     final password = passwordController.text;
     try {
@@ -46,6 +48,12 @@ class _LoginFormState extends State<LoginForm> {
 
       // Store accessToken securely
       apiService.setAuthToken(accessToken);
+
+      // Reset session timeout timer when the user logs in
+      final sessionManager =
+          Provider.of<SessionManager>(context, listen: false);
+      sessionManager.resetSessionTimeoutTimer();
+
       Get.off(MyDrawer());
       print('login successful');
     } catch (error) {
@@ -107,7 +115,9 @@ class _LoginFormState extends State<LoginForm> {
                             shape: MaterialStatePropertyAll(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)))),
-                        onPressed: _login,
+                        onPressed: () {
+                          _login(context);
+                        },
                         icon: Icon(Icons.login),
                         label: Text(
                           tLogin,

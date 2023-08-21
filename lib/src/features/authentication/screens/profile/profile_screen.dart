@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/features/authentication/screens/login/login_screen.dart';
@@ -10,6 +11,8 @@ import 'package:ssedisdik/src/features/authentication/screens/profile/profile_ed
 import 'package:ssedisdik/src/utils/api_service.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+
+import '../../controllers/login/session_controller.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -27,16 +30,19 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _getUserData();
+    _getUserData(context);
   }
 
-  Future<void> _getUserData() async {
+  Future<void> _getUserData(BuildContext context) async {
     final userDataString = await _secureStorage.read(key: 'userData');
     if (userDataString != null) {
       setState(() {
         userData = jsonDecode(userDataString);
       });
     }
+    final sessionManager =
+          Provider.of<SessionManager>(context, listen: false);
+      sessionManager.resetSessionTimeoutTimer();
   }
 
   void _handleLogout() async {
@@ -176,10 +182,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text(userData['nik'] ?? "No Data",
+                        Text(userData['nik'] ?? "No Data", 
                             textAlign: TextAlign.left,
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),
+                                
                         const SizedBox(height: tHomePadding),
                         Text("Nomor Telepon",
                             textAlign: TextAlign.left,

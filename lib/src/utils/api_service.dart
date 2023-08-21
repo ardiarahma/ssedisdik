@@ -13,32 +13,6 @@ class ApiService {
   static Dio _dio = Dio();
   final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
 
-  Timer? _sessionTimeoutTimer;
-  static const int sessionTimeoutMinutes = 30;
-
-  ApiService() {
-    _startSessionTimeoutTimer();
-  }
-
-  // -- Initialize session timer
-  void _startSessionTimeoutTimer() {
-    _sessionTimeoutTimer =
-        Timer(Duration(minutes: sessionTimeoutMinutes), logout);
-  }
-
-  // -- Reset session timer
-  void _resetSessionTimeoutTimer() {
-    _sessionTimeoutTimer?.cancel();
-    _startSessionTimeoutTimer();
-  }
-
-  // void _handleSessionTimeout() {
-  //   final snackBar = SnackBar(content: Text('Your session has ended.'));
-  //   ScaffoldMessenger.of(_context).showSnackBar(snackBar);
-
-  //   logout();
-  // }
-
   // -- Login
   Future<LoginResponse> login(String email, String password) async {
     final token = await _secureStorage.read(key: 'token');
@@ -57,7 +31,6 @@ class ApiService {
         setAuthToken(loginResponse.accessToken);
         _secureStorage.write(
             key: 'userData', value: jsonEncode(loginResponse.user));
-        _resetSessionTimeoutTimer();
         return loginResponse;
       } else {
         throw Exception('Login failed');
@@ -72,7 +45,6 @@ class ApiService {
   Future<void> logout() async {
     await _secureStorage
         .deleteAll(); // Clear all stored data from secure storage
-    _sessionTimeoutTimer?.cancel();
   }
   // -- Ends of Logout
 

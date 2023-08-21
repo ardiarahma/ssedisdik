@@ -1,13 +1,16 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:provider/provider.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/features/authentication/models/response/home_carousel_response.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
+import '../../controllers/login/session_controller.dart';
+
 class HomeCarouselWidget extends StatefulWidget {
-  const HomeCarouselWidget({super.key, required this.carouselData, required this.refreshCallback});
+  const HomeCarouselWidget(
+      {super.key, required this.carouselData, required this.refreshCallback});
   final List<String> carouselData;
   final VoidCallback refreshCallback;
 
@@ -25,18 +28,21 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
 
   List<MapEntry<String, String>> carouselItems = [];
   int currentIndex = 0;
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchData();
+    fetchData(context);
   }
 
-  Future<void> fetchData() async {
+  Future<void> fetchData(BuildContext context) async {
     try {
       final response = await ApiService().fetchCarouselData();
       final homeCarouselResponse = HomeCarouselResponse.fromJson(response);
+
+      final sessionManager =
+          Provider.of<SessionManager>(context, listen: false);
+      sessionManager.resetSessionTimeoutTimer();
 
       carouselItems = homeCarouselResponse.docResults.entries.map((entry) {
         final statusNumeric = int.parse(entry.key);
