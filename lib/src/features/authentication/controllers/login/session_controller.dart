@@ -7,7 +7,7 @@ import 'package:ssedisdik/src/features/authentication/screens/login/login_screen
 
 class SessionManager extends ChangeNotifier {
   Timer? _sessionTimeoutTimer;
-  static const int sessionTimeoutMinutes = 5;
+  static const int sessionTimeoutMinutes = 60;
   final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
 
   SessionManager() {

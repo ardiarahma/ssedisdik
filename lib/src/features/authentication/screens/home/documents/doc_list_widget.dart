@@ -27,7 +27,7 @@ class DocumentsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10.0, top: 5.0, right: 10.0, bottom: 5.0),
               child: Text(
-                model.documentsName,
+                model.documentName,
                 textAlign: TextAlign.left,
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     fontSize: 16,
@@ -45,7 +45,7 @@ class DocumentsWidget extends StatelessWidget {
                           .textTheme
                           .displayMedium
                           ?.copyWith(fontSize: 14, color: Colors.white)),
-                  Text(model.originFrom,
+                  Text(model.documentFrom,
                       textAlign: TextAlign.left,
                       style: Theme.of(context)
                           .textTheme
@@ -64,7 +64,7 @@ class DocumentsWidget extends StatelessWidget {
                           .textTheme
                           .displayMedium
                           ?.copyWith(fontSize: 14, color: Colors.white)),
-                  Text(model.date,
+                  Text(model.documentCreatedAt,
                       textAlign: TextAlign.left,
                       style: Theme.of(context)
                           .textTheme
@@ -84,7 +84,7 @@ class DocumentsWidget extends StatelessWidget {
                           .textTheme
                           .displayMedium
                           ?.copyWith(fontSize: 14, color: Colors.white)),
-                  Text(model.totalTte,
+                  Text(model.documentCountTte.toString(),
                       textAlign: TextAlign.left,
                       style: Theme.of(context)
                           .textTheme

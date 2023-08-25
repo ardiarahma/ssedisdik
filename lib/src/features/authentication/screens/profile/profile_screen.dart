@@ -40,9 +40,9 @@ class _ProfilePageState extends State<ProfilePage> {
         userData = jsonDecode(userDataString);
       });
     }
-    final sessionManager =
-          Provider.of<SessionManager>(context, listen: false);
-      sessionManager.resetSessionTimeoutTimer();
+    final sessionManager = Provider.of<SessionManager>(context, listen: false);
+    sessionManager.resetSessionTimeoutTimer();
+    print("nik value: ${userData['nik']}");
   }
 
   void _handleLogout() async {
@@ -182,11 +182,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text(userData['nik'] ?? "No Data", 
+                        Text(userData['nik'].toString() ?? "No Data",
                             textAlign: TextAlign.left,
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),
-                                
                         const SizedBox(height: tHomePadding),
                         Text("Nomor Telepon",
                             textAlign: TextAlign.left,

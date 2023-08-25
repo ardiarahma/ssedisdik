@@ -1,12 +1,6 @@
-// ignore_for_file: unused_local_variable
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
-import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/home/documents_controller.dart';
@@ -14,23 +8,50 @@ import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc
 import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_tabs_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_carousel_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_header_widget.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({Key? key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final DocumentsController _documentsController =
+      Get.find<DocumentsController>();
   List<String> carouselData = [];
+  ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('Initial currentPage: ${_documentsController.currentPage}');
+    _documentsController.fetchDocuments();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      // Load more when scrolling reaches the end
+      _documentsController.fetchDocuments();
+    }
+  }
 
   Future<void> _refreshData() async {
     print('Refreshing data...');
     await Future.delayed(Duration(seconds: 2));
     setState(() {
       carouselData = List.generate(5, (index) => 'Item ${index + 1}');
+      _documentsController.fetchDocuments();
     });
     print('Data refreshed');
   }
@@ -104,18 +125,17 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: tHomePadding),
                   // -- End of Slider
 
-                  // -- Documents List Start
+                  // -- Title Documents
                   Align(
                       alignment: Alignment.topLeft,
                       child: Text(tDaftarDokumen,
                           style: txtTheme.displayLarge?.copyWith(
                               fontSize: 18, fontWeight: FontWeight.bold))),
-
-                  // -- Search
+                  // -- End of Documents Title
 
                   const SizedBox(height: tHomePadding),
 
-                  // -- Title Documents
+                  // -- Search
                   TextField(
                     style: txtTheme.displaySmall?.copyWith(fontSize: 16),
                     decoration: InputDecoration(
@@ -127,8 +147,12 @@ class _HomePageState extends State<HomePage> {
                         hintText: tSearchDoc,
                         suffixIcon: const Icon(Icons.search_rounded),
                         suffixIconColor: primaryColor),
+                        onChanged: (newTerm) {
+                          _documentsController.updateSearchTerm(newTerm);
+                        },
                   ),
-                  // -- End of Documents Title
+                  
+                  // -- Ends of Search
 
                   const SizedBox(height: tHomePadding),
 
@@ -144,6 +168,7 @@ class _HomePageState extends State<HomePage> {
                       return SizedBox(
                         height: size.height,
                         child: ListView.builder(
+                          controller: _scrollController,
                           shrinkWrap: true,
                           itemCount: controller.documentsList.length,
                           itemBuilder: (context, index) {
@@ -158,8 +183,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                  )
+                  ),
                   // -- End of ListView
+
+                  SizedBox(
+                    height: 30.0,
+                  )
                 ],
               ),
             )

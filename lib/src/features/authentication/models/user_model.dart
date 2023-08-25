@@ -5,7 +5,7 @@ import 'position_model.dart';
 class User {
   final String id;
   final String name;
-  final String nik;
+  final int nik;
   final String noHP;
   final String email;
   final String photo;
