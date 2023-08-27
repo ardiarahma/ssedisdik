@@ -11,7 +11,7 @@ class NumberInputIncrementDecrement extends StatefulWidget {
 
 class _NumberInputIncrementDecrementState
     extends State<NumberInputIncrementDecrement> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -30,13 +30,13 @@ class _NumberInputIncrementDecrementState
           child: TextFormField(
             textAlign: TextAlign.center,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(8.0),
+              contentPadding: const EdgeInsets.all(8.0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5.0),
               ),
             ),
             controller: _controller,
-            keyboardType: TextInputType.numberWithOptions(
+            keyboardType: const TextInputType.numberWithOptions(
               decimal: false,
               signed: true,
             ),
@@ -52,7 +52,7 @@ class _NumberInputIncrementDecrementState
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
                       width: 0.5,
@@ -60,7 +60,7 @@ class _NumberInputIncrementDecrementState
                   ),
                 ),
                 child: InkWell(
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_drop_up,
                     size: 18.0,
                   ),
@@ -75,14 +75,13 @@ class _NumberInputIncrementDecrementState
                 ),
               ),
               InkWell(
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_drop_down,
                   size: 18.0,
                 ),
                 onTap: () {
                   int currentValue = int.parse(_controller.text);
                   setState(() {
-                    print("Setting state");
                     currentValue--;
                     _controller.text = (currentValue > 0 ? currentValue : 0)
                         .toString(); // decrementing value

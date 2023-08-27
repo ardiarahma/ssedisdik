@@ -1,8 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ssedisdik/src/constants/text_strings.dart';
 import 'package:ssedisdik/src/features/authentication/models/documents_model.dart';
-import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_list_widget.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
 class DocumentsController extends GetxController {
@@ -32,7 +29,7 @@ class DocumentsController extends GetxController {
     } catch (error) {
       // Handle error and set isFetching back to false
       isFetching.value = false;
-      print('Error fetching documents: $error' + 'data tidak muncul');
+      print('Error fetching documents: $error + data tidak muncul');
     }
   }
 

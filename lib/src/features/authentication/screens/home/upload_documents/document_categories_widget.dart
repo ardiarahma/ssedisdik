@@ -19,7 +19,7 @@ class _CategoryDropdownButtonState extends State<CategoryDropdownButton> {
     return Container(
       width: size.width,
       decoration: BoxDecoration(
-          color: Color.fromARGB(237, 238, 238, 238),
+          color: const Color.fromARGB(237, 238, 238, 238),
           borderRadius: BorderRadius.circular(20.0)),
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: InputDecorator(

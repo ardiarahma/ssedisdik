@@ -44,10 +44,10 @@ class OnBoardingPageWidget extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20),
                 child: Text(
                   model.counterText,
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 80.0,
               )
             ],

@@ -37,11 +37,11 @@ class WelcomeScreen extends StatelessWidget {
               rightAfter: 0,
               rightBefore: 0),
           child: Container(
-            padding: EdgeInsets.all(tDefaultSize),
+            padding: const EdgeInsets.all(tDefaultSize),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(left: 20, right: 20, top: 20),
                   child: Image(image: AssetImage(iWelcomeScreenImage)),
                 ),
@@ -60,19 +60,19 @@ class WelcomeScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: ElevatedButton(
-                        onPressed: () => Get.to(() => LoginScreen()),
-                        child: Text("Masuk"),
+                        onPressed: () => Get.to(() => const LoginScreen()),
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(7))),
+                        child: const Text("Masuk"),
                       ),
                     ),
                     ElevatedButton(
                         onPressed: () {},
-                        child: Text("Registrasi"),
                         style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(7)))),
+                                borderRadius: BorderRadius.circular(7))),
+                        child: const Text("Registrasi")),
                   ],
                 ),
               ],

@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 class TypeModel {
   final int typeId;

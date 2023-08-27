@@ -8,14 +8,14 @@ import 'package:ssedisdik/src/features/authentication/screens/login/login_screen
 class SessionManager extends ChangeNotifier {
   Timer? _sessionTimeoutTimer;
   static const int sessionTimeoutMinutes = 60;
-  final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   SessionManager() {
     _startSessionTimeoutTimer();
   }
 
   void _startSessionTimeoutTimer() {
-    _sessionTimeoutTimer = Timer(Duration(minutes: sessionTimeoutMinutes), () {
+    _sessionTimeoutTimer = Timer(const Duration(minutes: sessionTimeoutMinutes), () {
       _handleSessionTimeout();
     });
   }
@@ -28,11 +28,11 @@ class SessionManager extends ChangeNotifier {
 
   void logout() {
     _secureStorage.deleteAll();
-    final snackBar = SnackBar(
+    const snackBar = SnackBar(
       content: Text('Sesi Anda telah berakhir. Silakan lakukan login kembali.'),
     );
     ScaffoldMessenger.of(Get.context!).showSnackBar(snackBar);
-    Get.off(LoginScreen());
+    Get.off(const LoginScreen());
   }
 
   void resetSessionTimeoutTimer() {

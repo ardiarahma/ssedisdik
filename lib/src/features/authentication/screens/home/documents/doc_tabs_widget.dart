@@ -12,7 +12,7 @@ class DocumentsTabCategoriesWidget extends StatefulWidget {
 class _DocumentsTabCategoriesWidgetState
     extends State<DocumentsTabCategoriesWidget> {
   int _selectedIndex = 0;
-  List<String> _tabTitles = [
+  final List<String> _tabTitles = [
     'Draft Dokumen',
     'Dokumen Terkirim',
     'Selesai TTE',
@@ -36,7 +36,7 @@ class _DocumentsTabCategoriesWidgetState
               });
             },
             child: Padding(
-              padding: EdgeInsets.only(left: 10.0),
+              padding: const EdgeInsets.only(left: 10.0),
               child: Container(
                 height: size.height * 0.05,
                 decoration: BoxDecoration(

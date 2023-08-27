@@ -10,10 +10,8 @@ class DocumentPage extends StatefulWidget {
 class _DocumentPageState extends State<DocumentPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('this is Dokumen Page'),
-      ),
+    return const Center(
+      child: Text('this is Dokumen Page'),
     );
   }
 }

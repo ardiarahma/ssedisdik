@@ -3,8 +3,8 @@
 import 'package:matcher/matcher.dart';
 
 // -- Splash Screen Text
-const String AppName = "SSEDISDIK";
-const String AppTagLine =
+const String appName = "SSEDISDIK";
+const String appTagLine =
     "Sistem Sertifikat Elektronik \nDinas Pendidikan Provinsi DKI Jakarta";
 
 // -- On Boarding Screen Text

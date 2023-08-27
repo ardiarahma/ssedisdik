@@ -10,7 +10,7 @@ import '../../../../constants/image_strings.dart';
 import 'login_footer_widget.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +38,26 @@ class LoginScreen extends StatelessWidget {
                   0.21
                 ]),
                 backgroundColor: primaryColor,
-                size: Size(double.maxFinite, double.infinity)),
+                size: const Size(double.maxFinite, double.infinity)),
             Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(tDefaultSize),
+                  padding: const EdgeInsets.all(tDefaultSize),
                   child: Image(
-                    image: AssetImage(logoSse),
+                    image: const AssetImage(logoSse),
                     height: size.height * 0.2,
                   ),
                 ),
                 const SizedBox(height: 35),
                 LoginHeaderWidget(size: size),
-                LoginForm(),
-                Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Container(child: const LoginFooterWidget()))
+                const LoginForm(),
               ],
-            )
+            ),
+            const Positioned(
+                bottom: 10.0,
+                left: 0.0,
+                right: 0.0,
+                child: LoginFooterWidget())
           ],
         ),
       ),

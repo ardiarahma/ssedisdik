@@ -16,12 +16,11 @@ class HomeHeaderWidget extends StatefulWidget {
 }
 
 class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
-  final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
   Map<String, dynamic> userData = {};
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _getUserData();
   }

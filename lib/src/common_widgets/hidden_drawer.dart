@@ -24,47 +24,47 @@ class _MyDrawerState extends State<MyDrawer> {
     // Clear authentication data, such as token
     // apiService.clearAuthToken();
 
-    Get.offAll(LoginScreen()); // Navigate back to LoginScreen
+    Get.offAll(const LoginScreen()); // Navigate back to LoginScreen
   }
 
   @override
   void initState() {
     // TODO: implement initState
     _pages.add(
-      new ScreenHiddenDrawer(
-          new ItemHiddenMenu(
+      ScreenHiddenDrawer(
+          ItemHiddenMenu(
               name: "Beranda",
-              baseStyle: TextStyle(
+              baseStyle: const TextStyle(
                 color: Colors.white,
               ),
               colorLineSelected: Colors.teal,
-              selectedStyle: TextStyle(color: Colors.white)),
-          HomePage()),
+              selectedStyle: const TextStyle(color: Colors.white)),
+          const HomePage()),
     );
 
     _pages.add(
-      new ScreenHiddenDrawer(
-          new ItemHiddenMenu(
+      ScreenHiddenDrawer(
+          ItemHiddenMenu(
               name: "Profil",
-              baseStyle: TextStyle(
+              baseStyle: const TextStyle(
                 color: Colors.white,
               ),
               colorLineSelected: Colors.red,
-              selectedStyle: TextStyle(color: Colors.white)),
-          ProfilePage()),
+              selectedStyle: const TextStyle(color: Colors.white)),
+          const ProfilePage()),
     );
 
     _pages.add(
-      new ScreenHiddenDrawer(
-          new ItemHiddenMenu(
+      ScreenHiddenDrawer(
+          ItemHiddenMenu(
             name: "Validasi",
-            baseStyle: TextStyle(
+            baseStyle: const TextStyle(
               color: Colors.white,
             ),
             colorLineSelected: Colors.orange,
-            selectedStyle: TextStyle(color: Colors.white),
+            selectedStyle: const TextStyle(color: Colors.white),
           ),
-          DocumentPage()),
+          const DocumentPage()),
     );
 
     super.initState();
@@ -102,7 +102,7 @@ class _MyDrawerState extends State<MyDrawer> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => Get.to(() => UploadScreen()),
+          onPressed: () => Get.to(() => const UploadScreen()),
           backgroundColor: buttonColor,
           child: const Icon(
             Icons.file_present_rounded,

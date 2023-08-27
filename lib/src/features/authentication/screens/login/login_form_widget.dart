@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:passwordfield/passwordfield.dart';
 import 'package:provider/provider.dart';
 import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
-import 'package:ssedisdik/src/features/authentication/models/user_model.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
 import '../../../../constants/colors.dart';
 import '../../controllers/login/session_controller.dart';
 
 class LoginForm extends StatefulWidget {
-  LoginForm({
+  const LoginForm({
     super.key,
   });
 
@@ -54,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
           Provider.of<SessionManager>(context, listen: false);
       sessionManager.resetSessionTimeoutTimer();
 
-      Get.off(MyDrawer());
+      Get.off(const MyDrawer());
       print('login successful');
     } catch (error) {
       // Handle login or API errors
@@ -88,10 +84,10 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: _obscurePassword,
               decoration: InputDecoration(
                   filled: true,
-                  prefixIcon: Icon(Icons.password),
+                  prefixIcon: const Icon(Icons.password),
                   labelText: tPasswordInput,
                   hintText: tPasswordInput,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   suffixIcon: IconButton(
                     onPressed: _togglePasswordVisibility,
                     icon: Icon(_obscurePassword
@@ -118,7 +114,7 @@ class _LoginFormState extends State<LoginForm> {
                         onPressed: () {
                           _login(context);
                         },
-                        icon: Icon(Icons.login),
+                        icon: const Icon(Icons.login),
                         label: Text(
                           tLogin,
                           style: Theme.of(context)
@@ -161,27 +157,23 @@ class _LoginFormState extends State<LoginForm> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        child: const Image(
-                          image: AssetImage(logoBssn),
-                          height: 50,
-                          width: 50,
-                        ),
+                      const Image(
+                        image: AssetImage(logoBssn),
+                        height: 50,
+                        width: 50,
                       ),
                       Container(
-                        padding: EdgeInsets.only(left: 7, right: 7),
+                        padding: const EdgeInsets.only(left: 7, right: 7),
                         child: const Image(
                           image: AssetImage(logoBsre),
                           height: 70,
                           width: 110,
                         ),
                       ),
-                      Container(
-                        child: const Image(
-                          image: AssetImage(logoDisdik),
-                          height: 45,
-                          width: 45,
-                        ),
+                      const Image(
+                        image: AssetImage(logoDisdik),
+                        height: 45,
+                        width: 45,
                       ),
                     ],
                   ),

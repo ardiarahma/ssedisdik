@@ -2,18 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ssedisdik/src/features/authentication/models/response/login_response.dart';
-import 'package:ssedisdik/src/features/authentication/models/user_model.dart';
 
 import '../features/authentication/models/documents_model.dart';
 
 class ApiService {
   static const String baseUrl = 'http://localhost:8000/api';
-  static Dio _dio = Dio();
-  final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+  static final Dio _dio = Dio();
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   // -- Login
   Future<LoginResponse> login(String email, String password) async {

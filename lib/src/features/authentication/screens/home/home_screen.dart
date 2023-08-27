@@ -10,7 +10,7 @@ import 'package:ssedisdik/src/features/authentication/screens/home/home_carousel
 import 'package:ssedisdik/src/features/authentication/screens/home/home_header_widget.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key});
+  const HomePage({super.key, });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -20,11 +20,10 @@ class _HomePageState extends State<HomePage> {
   final DocumentsController _documentsController =
       Get.find<DocumentsController>();
   List<String> carouselData = [];
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     print('Initial currentPage: ${_documentsController.currentPage}');
     _documentsController.fetchDocuments();
@@ -48,7 +47,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _refreshData() async {
     print('Refreshing data...');
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     setState(() {
       carouselData = List.generate(5, (index) => 'Item ${index + 1}');
       _documentsController.fetchDocuments();
@@ -157,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: tHomePadding),
 
                   // -- Tabs Categories
-                  DocumentsTabCategoriesWidget(),
+                  const DocumentsTabCategoriesWidget(),
                   // -- Ends of Tabs Categories
 
                   const SizedBox(height: 10.0),
@@ -186,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   // -- End of ListView
 
-                  SizedBox(
+                  const SizedBox(
                     height: 30.0,
                   )
                 ],

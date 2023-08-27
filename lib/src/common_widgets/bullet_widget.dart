@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BulletParagraph extends StatelessWidget {
   final String text;
-  const BulletParagraph({required this.text});
+  const BulletParagraph({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

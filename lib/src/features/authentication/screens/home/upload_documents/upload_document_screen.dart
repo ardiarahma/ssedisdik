@@ -261,7 +261,7 @@ class _UploadScreenState extends State<UploadScreen> {
                     decoration: InputDecoration(
                       filled: true,
                       hintText: "e-000/XX.0000 / XXXX / 00000",
-                      fillColor: Color.fromARGB(237, 238, 238, 238),
+                      fillColor: const Color.fromARGB(237, 238, 238, 238),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         borderSide: BorderSide.none,
@@ -364,7 +364,7 @@ class _UploadScreenState extends State<UploadScreen> {
                               const SizedBox(
                                 height: 5.0,
                               ),
-                              NumberInputIncrementDecrement()
+                              const NumberInputIncrementDecrement()
                             ],
                           ),
                           const SizedBox(

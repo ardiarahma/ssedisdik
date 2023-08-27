@@ -74,7 +74,7 @@ class ProfileEditScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         hintText: "Namanya Siapa",
-                        fillColor: Color.fromARGB(237, 238, 238, 238),
+                        fillColor: const Color.fromARGB(237, 238, 238, 238),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide.none,
@@ -100,7 +100,7 @@ class ProfileEditScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         hintText: "xxxxxxxxxxxxxxxxxxx",
-                        fillColor: Color.fromARGB(237, 238, 238, 238),
+                        fillColor: const Color.fromARGB(237, 238, 238, 238),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide.none,
@@ -126,7 +126,7 @@ class ProfileEditScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         hintText: "082*********",
-                        fillColor: Color.fromARGB(237, 238, 238, 238),
+                        fillColor: const Color.fromARGB(237, 238, 238, 238),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide.none,
@@ -152,7 +152,7 @@ class ProfileEditScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         hintText: "namanyasiapa@gmail.com",
-                        fillColor: Color.fromARGB(237, 238, 238, 238),
+                        fillColor: const Color.fromARGB(237, 238, 238, 238),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide.none,
@@ -179,7 +179,7 @@ class ProfileEditScreen extends StatelessWidget {
                         filled: true,
                         hintText:
                             "Suku Dinas Pendidikan Wilayah I Kota Adm. Jakarta Pusat",
-                        fillColor: Color.fromARGB(237, 238, 238, 238),
+                        fillColor: const Color.fromARGB(237, 238, 238, 238),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide.none,
@@ -205,7 +205,7 @@ class ProfileEditScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         filled: true,
                         hintText: "Staf",
-                        fillColor: Color.fromARGB(237, 238, 238, 238),
+                        fillColor: const Color.fromARGB(237, 238, 238, 238),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide.none,
@@ -224,7 +224,7 @@ class ProfileEditScreen extends StatelessWidget {
                                 RoundedRectangleBorder( 
                                     borderRadius: BorderRadius.circular(10)))),
                         onPressed: () {},
-                        icon: Icon(Icons.save),
+                        icon: const Icon(Icons.save),
                         label: Text(
                           "Simpan Perubahan",
                           style: Theme.of(context)

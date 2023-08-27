@@ -12,7 +12,7 @@ import 'package:ssedisdik/src/constants/text_strings.dart';
 import 'package:ssedisdik/src/common_widgets/fade_in_animation/fade_in_animation_controller.dart';
 
 class SplashScreen extends StatelessWidget {
-  SplashScreen({super.key});
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class SplashScreen extends StatelessWidget {
                   rightBefore: 100,
                   leftAfter: 100,
                   leftBefore: 100),
-              child: Image(image: AssetImage(logoSse))),
+              child: const Image(image: AssetImage(logoSse))),
           TFadeInAnimation(
             durationInMs: 2400,
             animatePosition: TAnimatePosition(

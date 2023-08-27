@@ -6,7 +6,7 @@ import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/on_boarding_controller.dart';
 
 class OnBoardingScreen extends StatefulWidget {
-  OnBoardingScreen({super.key});
+  const OnBoardingScreen({super.key});
 
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
@@ -23,7 +23,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           LiquidSwipe(
             pages: obController.pages,
             liquidController: obController.controller,
-            slideIconWidget: Icon(Icons.arrow_back_ios),
+            slideIconWidget: const Icon(Icons.arrow_back_ios),
             enableSideReveal: true,
             onPageChangeCallback: obController.onPageChangedCallback,
           ),
@@ -33,10 +33,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               child: OutlinedButton(
                 onPressed: () => obController.animateToNextSlide(),
                 style: ElevatedButton.styleFrom(
-                    side: const BorderSide(color: Colors.black26),
+                    foregroundColor: Colors.white, side: const BorderSide(color: Colors.black26),
                     shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(20),
-                    onPrimary: Colors.white),
+                    padding: const EdgeInsets.all(20)),
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: const BoxDecoration(

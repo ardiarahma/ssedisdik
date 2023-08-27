@@ -1,23 +1,11 @@
-// ignore_for_file: unused_shown_name
 
 import 'package:flutter/material.dart'
     show
         BuildContext,
-        Colors,
-        Container,
-        Icon,
-        Icons,
-        MaterialApp,
-        State,
-        StatefulWidget,
         StatelessWidget,
-        Text,
-        TextStyle,
-        ThemeData,
         ThemeMode,
         Widget,
         runApp;
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/home/documents_controller.dart';
@@ -29,7 +17,7 @@ void main() {
   Get.put(DocumentsController());
   runApp(ChangeNotifierProvider(
     create: (context) => SessionManager(),
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
@@ -47,7 +35,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
 
       // home: Home(),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

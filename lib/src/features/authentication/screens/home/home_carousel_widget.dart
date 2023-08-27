@@ -73,14 +73,14 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
           child: CarouselSlider(
             items: carouselItems.map((item) {
               return Container(
-                padding: EdgeInsets.symmetric(vertical: 32.0),
+                padding: const EdgeInsets.symmetric(vertical: 32.0),
                 margin: const EdgeInsets.symmetric(
                     vertical: tHomePadding, horizontal: 5),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     color: primaryColor,
                     borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Colors.grey,
                           spreadRadius: 1,

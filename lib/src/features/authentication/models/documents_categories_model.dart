@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 class DocCategoriesModel {
   final int categoryId;

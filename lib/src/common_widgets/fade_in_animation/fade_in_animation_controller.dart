@@ -9,25 +9,25 @@ class FadeInAnimationController extends GetxController {
   RxBool animate = false.obs;
 
   Future startSplashAnimation() async {
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
     animate.value = true;
-    await Future.delayed(Duration(milliseconds: 3000));
+    await Future.delayed(const Duration(milliseconds: 3000));
     animate.value = false;
-    await Future.delayed(Duration(milliseconds: 5000));
-    Get.offAll(() => LoginScreen(),
+    await Future.delayed(const Duration(milliseconds: 5000));
+    Get.offAll(() => const LoginScreen(),
         duration: const Duration(milliseconds: 1000),
         transition: Transition.fadeIn);
   }
 
 // -- dipanggil kalo mau pake animate In di widget manapun
   Future animationIn() async {
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 100));
     animate.value = true;
   }
 
 // -- dipanggil kalo mau pake animate Out di widget manapun
   Future animationOut() async {
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 100));
     animate.value = false;
   }
 }

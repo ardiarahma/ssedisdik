@@ -23,12 +23,11 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final ApiService apiService = ApiService();
-  final FlutterSecureStorage _secureStorage = FlutterSecureStorage();
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
   Map<String, dynamic> userData = {};
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _getUserData(context);
   }
@@ -48,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void _handleLogout() async {
     try {
       await apiService.logout();
-      Get.off(LoginScreen());
+      Get.off(const LoginScreen());
       print('logout successful');
     } catch (error) {
       print('logout unsuccessful');
@@ -83,7 +82,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   0.12
                 ]),
                 backgroundColor: primaryColor,
-                size: Size(double.maxFinite, double.infinity)),
+                size: const Size(double.maxFinite, double.infinity)),
             Padding(
               padding: const EdgeInsets.only(
                   left: tHomePadding, right: tHomePadding),
@@ -93,7 +92,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      padding: EdgeInsets.all(tDefaultSize),
+                      padding: const EdgeInsets.all(tDefaultSize),
                       child: Text(
                         userData['name'],
                         style: txtTheme.displayLarge?.copyWith(
@@ -113,7 +112,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: size.width,
                     child: Material(
                       elevation: 4.0,
-                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                       color: Colors.white,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,7 +126,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           InkWell(
                             onTap: () =>
                                 Get.to(() => const ProfileEditScreen()),
-                            child: Icon(
+                            child: const Icon(
                               Icons.arrow_right_rounded,
                               size: 35.0,
                             ),
@@ -146,7 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     width: size.width,
                     child: Material(
                       elevation: 4.0,
-                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      borderRadius: const BorderRadius.all(Radius.circular(30.0)),
                       color: Colors.white,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -182,7 +181,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             style: txtTheme.displayLarge?.copyWith(
                                 fontSize: 16, fontWeight: FontWeight.bold)),
                         const SizedBox(height: tHomePadding),
-                        Text(userData['nik'].toString() ?? "No Data",
+                        Text(userData['nik'].toString(),
                             textAlign: TextAlign.left,
                             style:
                                 txtTheme.displayLarge?.copyWith(fontSize: 14)),
@@ -245,7 +244,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)))),
                         onPressed: _handleLogout,
-                        icon: Icon(Icons.logout_rounded),
+                        icon: const Icon(Icons.logout_rounded),
                         label: Text(
                           "Keluar",
                           style: Theme.of(context)
