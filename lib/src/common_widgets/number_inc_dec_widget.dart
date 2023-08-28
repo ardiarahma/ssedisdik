@@ -15,7 +15,6 @@ class _NumberInputIncrementDecrementState
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller.text = "0";
   }
@@ -25,7 +24,7 @@ class _NumberInputIncrementDecrementState
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
-        Container(
+        SizedBox(
           width: size.width * 0.1,
           child: TextFormField(
             textAlign: TextAlign.center,
@@ -45,7 +44,7 @@ class _NumberInputIncrementDecrementState
             ],
           ),
         ),
-        Container(
+        SizedBox(
           height: size.height * 0.05,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

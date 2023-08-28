@@ -414,7 +414,7 @@ class _UploadScreenState extends State<UploadScreen> {
                               const SizedBox(
                                 height: 5.0,
                               ),
-                              Container(
+                              SizedBox(
                                 width: size.width * 0.18,
                                 height: size.height * 0.05,
                                 child: TextField(

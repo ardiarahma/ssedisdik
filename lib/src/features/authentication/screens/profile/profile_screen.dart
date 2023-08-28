@@ -25,21 +25,23 @@ class _ProfilePageState extends State<ProfilePage> {
   final ApiService apiService = ApiService();
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
   Map<String, dynamic> userData = {};
+  late BuildContext _sessionContext;
 
   @override
   void initState() {
     super.initState();
-    _getUserData(context);
+    _getUserData();
   }
 
-  Future<void> _getUserData(BuildContext context) async {
+  Future<void> _getUserData() async {
     final userDataString = await _secureStorage.read(key: 'userData');
     if (userDataString != null) {
       setState(() {
         userData = jsonDecode(userDataString);
       });
     }
-    final sessionManager = Provider.of<SessionManager>(context, listen: false);
+    final sessionManager =
+        Provider.of<SessionManager>(_sessionContext, listen: false);
     sessionManager.resetSessionTimeoutTimer();
     print("nik value: ${userData['nik']}");
   }
@@ -57,8 +59,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    _sessionContext = context;
     final size = MediaQuery.of(context).size;
     final txtTheme = Theme.of(context).textTheme;
+
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -107,12 +111,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: 80),
 
                   // -- Edit Profile Content
-                  Container(
+                  SizedBox(
                     height: size.height * 0.06,
                     width: size.width,
                     child: Material(
                       elevation: 4.0,
-                      borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(30.0)),
                       color: Colors.white,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,12 +145,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   const SizedBox(height: tHomePadding),
 
                   // -- Fingerprint Settings
-                  Container(
+                  SizedBox(
                     height: size.height * 0.06,
                     width: size.width,
                     child: Material(
                       elevation: 4.0,
-                      borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(30.0)),
                       color: Colors.white,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -236,7 +242,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   // -- Logout Button
                   Flexible(
-                    child: Container(
+                    child: SizedBox(
                       height: 45,
                       child: ElevatedButton.icon(
                         style: ButtonStyle(

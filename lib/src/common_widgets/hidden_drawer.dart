@@ -29,7 +29,6 @@ class _MyDrawerState extends State<MyDrawer> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _pages.add(
       ScreenHiddenDrawer(
           ItemHiddenMenu(
@@ -73,7 +72,7 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: HiddenDrawerMenu(
           screens: _pages,

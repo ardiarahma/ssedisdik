@@ -52,6 +52,7 @@ dependencies:
   passwordfield: ^0.2.0
   local_auth: ^2.1.6
   provider: ^6.0.5
+  matcher: ^0.12.16
 
 dev_dependencies:
   flutter_test:

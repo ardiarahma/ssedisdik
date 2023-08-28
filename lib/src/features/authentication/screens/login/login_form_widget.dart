@@ -21,6 +21,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final ApiService apiService = ApiService();
+  late SessionManager _sessionManager;
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -35,6 +36,12 @@ class _LoginFormState extends State<LoginForm> {
     });
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _sessionManager = Provider.of<SessionManager>(context, listen: false);
+  }
+
   Future<void> _login(BuildContext context) async {
     final email = emailController.text;
     final password = passwordController.text;
@@ -46,9 +53,7 @@ class _LoginFormState extends State<LoginForm> {
       apiService.setAuthToken(accessToken);
 
       // Reset session timeout timer when the user logs in
-      final sessionManager =
-          Provider.of<SessionManager>(context, listen: false);
-      sessionManager.resetSessionTimeoutTimer();
+      _sessionManager.resetSessionTimeoutTimer();
 
       Get.off(const MyDrawer());
       print('login successful');

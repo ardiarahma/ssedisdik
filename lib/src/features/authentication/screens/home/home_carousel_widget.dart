@@ -28,23 +28,21 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
 
   List<MapEntry<String, String>> carouselItems = [];
   int currentIndex = 0;
+  HomeCarouselResponse? homeCarouselResponse; 
+  
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    fetchData(context);
+    fetchData();
+    resetSession();
   }
 
-  Future<void> fetchData(BuildContext context) async {
+  Future<void> fetchData() async {
     try {
       final response = await ApiService().fetchCarouselData();
-      final homeCarouselResponse = HomeCarouselResponse.fromJson(response);
+      homeCarouselResponse = HomeCarouselResponse.fromJson(response);
 
-      final sessionManager =
-          Provider.of<SessionManager>(context, listen: false);
-      sessionManager.resetSessionTimeoutTimer();
-
-      carouselItems = homeCarouselResponse.docResults.entries.map((entry) {
+      carouselItems = (homeCarouselResponse?.docResults.entries ?? []).map((entry) {
         final statusNumeric = int.parse(entry.key);
         print("Status Numeric: $statusNumeric");
         final statusText = statusMap[statusNumeric] ?? 'Unknown Status';
@@ -58,6 +56,11 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
     } catch (error) {
       // Handle error
     }
+  }
+
+   void resetSession() {
+    final sessionManager = Provider.of<SessionManager>(context, listen: false);
+    sessionManager.resetSessionTimeoutTimer();
   }
 
   @override
