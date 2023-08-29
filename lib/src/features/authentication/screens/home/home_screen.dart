@@ -10,7 +10,9 @@ import 'package:ssedisdik/src/features/authentication/screens/home/home_carousel
 import 'package:ssedisdik/src/features/authentication/screens/home/home_header_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, });
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -28,6 +30,7 @@ class _HomePageState extends State<HomePage> {
     print('Initial currentPage: ${_documentsController.currentPage}');
     _documentsController.fetchDocuments();
     _scrollController.addListener(_scrollListener);
+    setState(() {});
   }
 
   @override
@@ -42,12 +45,13 @@ class _HomePageState extends State<HomePage> {
         _scrollController.position.maxScrollExtent) {
       // Load more when scrolling reaches the end
       _documentsController.fetchDocuments();
+      setState(() {});
     }
   }
 
   Future<void> _refreshData() async {
     print('Refreshing data...');
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     setState(() {
       carouselData = List.generate(5, (index) => 'Item ${index + 1}');
       _documentsController.fetchDocuments();
@@ -146,11 +150,11 @@ class _HomePageState extends State<HomePage> {
                         hintText: tSearchDoc,
                         suffixIcon: const Icon(Icons.search_rounded),
                         suffixIconColor: primaryColor),
-                        onChanged: (newTerm) {
-                          _documentsController.updateSearchTerm(newTerm);
-                        },
+                    onChanged: (newTerm) {
+                      _documentsController.updateSearchTerm(newTerm);
+                    },
                   ),
-                  
+
                   // -- Ends of Search
 
                   const SizedBox(height: tHomePadding),

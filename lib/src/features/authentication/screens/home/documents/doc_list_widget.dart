@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/features/authentication/models/documents_model.dart';
 
-class DocumentsWidget extends StatelessWidget {
+class DocumentsWidget extends StatefulWidget {
   const DocumentsWidget({super.key, required this.model});
   final DocumentsModel model;
 
+  @override
+  State<DocumentsWidget> createState() => _DocumentsWidgetState();
+}
+
+class _DocumentsWidgetState extends State<DocumentsWidget> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -27,7 +32,7 @@ class DocumentsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 10.0, top: 5.0, right: 10.0, bottom: 5.0),
               child: Text(
-                model.documentName,
+                widget.model.documentName,
                 textAlign: TextAlign.left,
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
                     fontSize: 16,
@@ -45,7 +50,7 @@ class DocumentsWidget extends StatelessWidget {
                           .textTheme
                           .displayMedium
                           ?.copyWith(fontSize: 14, color: Colors.white)),
-                  Text(model.documentFrom,
+                  Text(widget.model.documentFrom,
                       textAlign: TextAlign.left,
                       style: Theme.of(context)
                           .textTheme
@@ -64,7 +69,7 @@ class DocumentsWidget extends StatelessWidget {
                           .textTheme
                           .displayMedium
                           ?.copyWith(fontSize: 14, color: Colors.white)),
-                  Text(model.documentCreatedAt,
+                  Text(widget.model.documentCreatedAt,
                       textAlign: TextAlign.left,
                       style: Theme.of(context)
                           .textTheme
@@ -84,7 +89,7 @@ class DocumentsWidget extends StatelessWidget {
                           .textTheme
                           .displayMedium
                           ?.copyWith(fontSize: 14, color: Colors.white)),
-                  Text(model.documentCountTte.toString(),
+                  Text(widget.model.documentCountTte.toString(),
                       textAlign: TextAlign.left,
                       style: Theme.of(context)
                           .textTheme

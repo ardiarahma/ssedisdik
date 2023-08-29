@@ -37,6 +37,11 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
+    // Check if 'name' is available in userData before using it
+    final greetingText = userData.containsKey('name')
+        ? tGreeting + userData['name']
+        : tGreeting; // Use a default value if 'name' is not available
+
     return Container(
       // height: size.height * 0.15,
       decoration: const BoxDecoration(
@@ -62,7 +67,7 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        tGreeting + userData['name'],
+                        greetingText,
                         style: txtTheme.displayMedium
                             ?.copyWith(color: Colors.white, fontSize: 20),
                         overflow: TextOverflow.ellipsis,

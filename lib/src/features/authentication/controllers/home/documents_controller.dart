@@ -26,6 +26,7 @@ class DocumentsController extends GetxController {
       currentPage++;
       // Perform the API call and data processing
       isFetching.value = false; // Set isFetching back to false after fetching
+      print('Documents has fetched');
     } catch (error) {
       // Handle error and set isFetching back to false
       isFetching.value = false;
@@ -42,5 +43,9 @@ class DocumentsController extends GetxController {
     currentPage = 1;
     documentsList.clear();
     fetchDocuments(); // Fetch documents with the new search term
+  }
+
+  void updateFilterStatus(String? status) {
+    filterStatus = status;
   }
 }

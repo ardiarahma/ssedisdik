@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
+import 'package:ssedisdik/src/features/authentication/controllers/home/documents_controller.dart';
 
 class DocumentsTabCategoriesWidget extends StatefulWidget {
   const DocumentsTabCategoriesWidget({Key? key}) : super(key: key);
@@ -34,6 +36,35 @@ class _DocumentsTabCategoriesWidgetState
               setState(() {
                 _selectedIndex = index;
               });
+
+              String? status;
+
+              switch (index) {
+                case 0:
+                  status = "4"; // Draft Dokumen
+                  setState(() {});
+                  break;
+                case 1:
+                  status = "1"; // Dokumen Terkirim
+                  setState(() {});
+                  break;
+                case 2:
+                  status = "2"; // Selesai TTE
+                  setState(() {});
+                  break;
+                case 3:
+                  status = "3"; // Dokumen Ditolak
+                  setState(() {});
+                  break;
+              }
+
+              final documentsController = Get.find<DocumentsController>();
+              documentsController.updateFilterStatus(status);
+              setState(() {}); // Update the filterStatus
+              print('Status has changed.');
+              documentsController.resetPageAndFetchDocuments();
+              setState(() {}); 
+              print('Documents has reset.');// Fetch documents with the new filterStatus
             },
             child: Padding(
               padding: const EdgeInsets.only(left: 10.0),
