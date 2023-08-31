@@ -7,6 +7,7 @@ import 'package:ssedisdik/src/common_widgets/number_inc_dec_widget.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/orientation_controller.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/pejabat_controller.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/type_controller.dart';
+import 'package:ssedisdik/src/features/authentication/models/documents_categories_model.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/pejabat_tte_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/orientation_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/type_widget.dart';
@@ -18,6 +19,7 @@ import 'package:ssedisdik/src/features/authentication/controllers/home/documents
 import 'package:ssedisdik/src/features/authentication/controllers/unit_kerja_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/document_categories_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/unit_kerja_tujuan_widget.dart';
+import 'package:ssedisdik/src/utils/api_service.dart';
 
 class UploadScreen extends StatefulWidget {
   const UploadScreen({super.key});
@@ -27,18 +29,65 @@ class UploadScreen extends StatefulWidget {
 }
 
 class _UploadScreenState extends State<UploadScreen> {
+//   void postData() async {
+//   try {
+//     final requestData = {
+//       // Populate this map with the required parameters for your POST request
+//       'nama_dokumen': 'Document Name',
+//       'kategori_dokumen': 'Document Category',
+//       'asal_dokumen' : '',
+//       'ukuran_dokumen' : '',
+//       'file' : '',
+//       'kirim_ke' : '',
+//       'pejabat_tte' : '',
+//     };
+
+//     final documentApiResponse = await ApiService().postDocumentData(
+//       requestData: requestData,
+//     );
+
+//     // Now you can access the parsed data
+//     print(documentApiResponse.results.documentName);
+//     print(documentApiResponse.results.file[0].fileName);
+//     print(documentApiResponse.results.esign[0].page);
+
+//     // ... (do whatever you need with the data)
+//   } catch (error) {
+//     // Handle the error
+//     print('Error posting document data: $error');
+//   }
+// }
+
+  final DocCategoriesController docCategoriesController =
+      Get.put<DocCategoriesController>(DocCategoriesController());
+  DocCategoriesModel? selectedCategory;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCategories();
+  }
+
+  Future<void> fetchCategories() async {
+    try {
+      await docCategoriesController.fetchCategories();
+      if (docCategoriesController.categories.isNotEmpty) {
+        selectedCategory = docCategoriesController.categories[0];
+      }
+    } catch (error) {
+      print('Error fetching categories: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
     Size size = MediaQuery.of(context).size;
 
-    Get.put<DocCategoriesController>(DocCategoriesController());
     Get.put<UnitKerjaController>(UnitKerjaController());
     Get.put<PejabatController>(PejabatController());
     Get.put<OrientationController>(OrientationController());
     Get.put<TypeController>(TypeController());
-
-    final docCategoriesController = Get.find<DocCategoriesController>();
     final unitKerjaController = Get.find<UnitKerjaController>();
     final pejabatController = Get.find<PejabatController>();
     final orientationController = Get.find<OrientationController>();
@@ -286,7 +335,16 @@ class _UploadScreenState extends State<UploadScreen> {
                   ),
 
                   CategoryDropdownButton(
-                      categories: docCategoriesController.categories),
+                    selectedCategory: selectedCategory,
+                    categories: docCategoriesController.categories,
+                    onChanged: (category) {
+                      setState(() {
+                        selectedCategory = category;
+                      });
+                      // Call your other method here and pass selectedCategory as a parameter
+                      // yourMethod(selectedCategory);
+                    },
+                  ),
                   // -- Ends of Documents Detail - Categories
 
                   const SizedBox(
@@ -347,13 +405,15 @@ class _UploadScreenState extends State<UploadScreen> {
                     height: 10.0,
                   ),
 
-                  // -- Documents Detail -- Halaman
+                  // -- Documents Detail -- TTE Details
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      // -- TTE Details
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          // -- TTE Details -- Halaman
                           Column(
                             children: [
                               Align(
@@ -367,9 +427,13 @@ class _UploadScreenState extends State<UploadScreen> {
                               const NumberInputIncrementDecrement()
                             ],
                           ),
+                          // -- Ends of TTE Details -- Halaman
+
                           const SizedBox(
                             width: 5.0,
                           ),
+
+                          // -- TTE Details -- Posisi
                           Column(
                             children: [
                               Align(
@@ -385,9 +449,13 @@ class _UploadScreenState extends State<UploadScreen> {
                                       orientationController.orientations)
                             ],
                           ),
+                          // -- Ends of TTE Details -- Posisi
+
                           const SizedBox(
                             width: 5.0,
                           ),
+
+                          // -- TTE Details -- Jenis
                           Column(
                             children: [
                               Align(
@@ -401,9 +469,13 @@ class _UploadScreenState extends State<UploadScreen> {
                               TypeDropdownButton(types: typeController.types)
                             ],
                           ),
+                          // -- Ends of TTE Details -- Jenis
+
                           const SizedBox(
                             width: 5.0,
                           ),
+
+                          // -- TTE Details -- Tanda Tag
                           Column(
                             children: [
                               Align(
@@ -423,9 +495,10 @@ class _UploadScreenState extends State<UploadScreen> {
                                   decoration: InputDecoration(
                                     filled: true,
                                     hintText: "Isi Tag",
-                                    contentPadding: const EdgeInsets.only(left: 20.0),
-                                    fillColor:
-                                        const Color.fromARGB(237, 238, 238, 238),
+                                    contentPadding:
+                                        const EdgeInsets.only(left: 20.0),
+                                    fillColor: const Color.fromARGB(
+                                        237, 238, 238, 238),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(20.0),
                                       borderSide: BorderSide.none,
@@ -435,8 +508,12 @@ class _UploadScreenState extends State<UploadScreen> {
                               )
                             ],
                           ),
+                          // -- Ends of TTE Details -- Tanda Tag
                         ],
                       ),
+                      // -- Ends of TTE Details
+
+                      // -- Button to Add TTE Details
                       SizedBox(
                         width: size.width * 0.15,
                         height: size.height * 0.05,
@@ -452,12 +529,13 @@ class _UploadScreenState extends State<UploadScreen> {
                           child: const Icon(Icons.add),
                         ),
                       ),
+                      // -- Ends of Button to Add TTE Details
                     ],
                   ),
                   // -- Ends of Documents Detail -- Halaman
 
                   const SizedBox(
-                    height: 100.0,
+                    height: 50.0,
                   ),
                 ],
               ),

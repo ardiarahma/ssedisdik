@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:ssedisdik/src/features/authentication/models/documents_categories_model.dart';
 import 'package:ssedisdik/src/features/authentication/models/response/login_response.dart';
 
 import '../features/authentication/models/documents_model.dart';
@@ -108,9 +109,68 @@ class ApiService {
       throw Exception('Fetch documents error: $error');
     }
   }
-  // -- Ends of Gets Documents Lists
+  // -- Ends of Get Documents Lists
 
+  // -- Get Documents Category's Data
+  Future<List<DocCategoriesModel>> fetchDocumentCategories({
+    String? term,
+    int? take,
+    int? skip,
+  }) async {
+    final token = await _secureStorage.read(key: 'token');
+    try {
+      final response = await _dio.get(
+        '$baseUrl/category',
+        queryParameters: {
+          if (term != null) 'term': term,
+          if (take != null) 'take': take,
+          if (skip != null) 'skip': skip,
+        },
+        options: Options(
+          headers: {'Authorization': 'Bearer $token'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final List<dynamic> responseData = response.data['results'];
+        final List<DocCategoriesModel> categories = responseData
+            .map((json) => DocCategoriesModel.fromJson(json))
+            .toList();
+        return categories;
+      } else {
+        throw Exception('Failed to fetch document categories');
+      }
+    } catch (error) {
+      throw Exception('Fetch document categories error: $error');
+    }
+  }
 
+  // -- Ends of Fetch Documents Category's Data
+
+  // -- Upload Documents
+  // Future<DocumentApiResponse> postDocumentData({
+  //   Map<String, dynamic> requestData,
+  // }) async {
+  //   final token = await _secureStorage.read(key: 'token');
+  //   try {
+  //     final response = await _dio.post(
+  //       '$baseUrl/your-post-endpoint', // Update with your actual POST endpoint
+  //       data: requestData,
+  //       options: Options(
+  //         headers: {'Authorization': 'Bearer $token'},
+  //       ),
+  //     );
+
+  //     if (response.statusCode == 200) {
+  //       final documentApiResponse = DocumentApiResponse.fromJson(response.data);
+  //       return documentApiResponse;
+  //     } else {
+  //       throw Exception('Failed to post document data');
+  //     }
+  //   } catch (error) {
+  //     throw Exception('Post document data error: $error');
+  //   }
+  // }
+  // -- Ends of Upload Documents
 }
 
 class AuthInterceptor extends Interceptor {

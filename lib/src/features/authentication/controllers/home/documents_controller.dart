@@ -6,7 +6,7 @@ class DocumentsController extends GetxController {
   final ApiService _apiService = ApiService();
   RxList<DocumentsModel> documentsList = <DocumentsModel>[].obs;
   int currentPage = 1;
-  int itemsPerPage = 10; // Adjust as needed
+  int itemsPerPage = 5; // Adjust as needed
   RxString searchTerm = ''.obs; // Make searchTerm reactive
   String? filterStatus;
   RxBool isFetching = false.obs;
@@ -25,7 +25,8 @@ class DocumentsController extends GetxController {
       documentsList.addAll(newDocuments);
       currentPage++;
       // Perform the API call and data processing
-      isFetching.value = false; // Set isFetching back to false after fetching
+      isFetching.value = false; 
+      // Set isFetching back to false after fetching
       print('Documents has fetched');
     } catch (error) {
       // Handle error and set isFetching back to false
