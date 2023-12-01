@@ -4,7 +4,10 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ssedisdik/src/features/authentication/models/documents_categories_model.dart';
+import 'package:ssedisdik/src/features/authentication/models/pejabat_model.dart';
 import 'package:ssedisdik/src/features/authentication/models/response/login_response.dart';
+import 'package:ssedisdik/src/features/authentication/models/unit_kerja_model.dart';
+import 'package:ssedisdik/src/features/authentication/models/user_model.dart';
 
 import '../features/authentication/models/documents_model.dart';
 
@@ -39,15 +42,14 @@ class ApiService {
       throw Exception('Login error: $error');
     }
   }
-  // -- Ends of Login
 
   // -- Logout
   Future<void> logout() async {
     await _secureStorage
         .deleteAll(); // Clear all stored data from secure storage
   }
-  // -- Ends of Logout
 
+  // -- Get Carousel Data
   Future<Map<String, dynamic>> fetchCarouselData() async {
     final token = await _secureStorage.read(key: 'token');
     try {
@@ -72,7 +74,6 @@ class ApiService {
     _secureStorage.write(key: 'authToken', value: token);
     _dio.interceptors.add(AuthInterceptor(token));
   }
-  // -- Ends of Saving Auth Token
 
   // -- Get Documents Lists
   Future<List<DocumentsModel>> fetchPaginatedAndFilteredDocuments({
@@ -109,7 +110,6 @@ class ApiService {
       throw Exception('Fetch documents error: $error');
     }
   }
-  // -- Ends of Get Documents Lists
 
   // -- Get Documents Category's Data
   Future<List<DocCategoriesModel>> fetchDocumentCategories({
@@ -144,7 +144,79 @@ class ApiService {
     }
   }
 
-  // -- Ends of Fetch Documents Category's Data
+  // -- Get Unit Kerja Data
+  Future<List<UnitKerjaModel>> fetchUnitKerja({
+    String? term,
+    int? take,
+    int? skip,
+  }) async {
+    final token = await _secureStorage.read(key: 'token');
+    try {
+      final response = await _dio.get(
+        '$baseUrl/group',
+        queryParameters: {
+          if (term != null) 'term': term,
+          if (take != null) 'take': take,
+          if (skip != null) 'skip': skip,
+        },
+        options: Options(
+          headers: {'Authorization': 'Bearer $token'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final List<dynamic> responseData = response.data['results'];
+        final List<UnitKerjaModel> unitKerja =
+            responseData.map((json) => UnitKerjaModel.fromJson(json)).toList();
+        return unitKerja;
+      } else {
+        throw Exception('Failed to fetch unit kerja');
+      }
+    } catch (error) {
+      throw Exception('Fetch unit kerja error: $error');
+    }
+  }
+
+  // -- Get Data Pejabat
+  Future<List<PejabatModel>> fetchPejabat({
+    String? term,
+    int? take,
+    int? skip,
+    String? group,
+  }) async {
+    final token = await _secureStorage.read(key: 'token');
+    try {
+      final response = await _dio.get(
+        '$baseUrl/pejabat',
+        queryParameters: {
+          if (term != null) 'term': term,
+          if (take != null) 'take': take,
+          if (skip != null) 'skip': skip,
+          if (group != null) 'group': group,
+        },
+        options: Options(
+          headers: {'Authorization': 'Bearer $token'},
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        final responseData = response.data;
+
+        if (responseData['status'] == 'success') {
+          final List<dynamic> results = responseData['results'];
+          final List<PejabatModel> pejabatData =
+              results.map((json) => PejabatModel.fromJson(json)).toList();
+          return pejabatData;
+        } else {
+          throw Exception(
+              'API request was successful, but the status is not "success"');
+        }
+      } else {
+        throw Exception('Failed to fetch data pejabat');
+      }
+    } catch (error) {
+      throw Exception('Fetch data pejabat error: $error');
+    }
+  }
 
   // -- Upload Documents
   // Future<DocumentApiResponse> postDocumentData({

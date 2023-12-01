@@ -30,7 +30,9 @@ class _HomePageState extends State<HomePage> {
     print('Initial currentPage: ${_documentsController.currentPage}');
     _documentsController.fetchDocuments();
     _scrollController.addListener(_scrollListener);
-    setState(() {});
+    setState(() {
+      _documentsController.fetchDocuments();
+    });
   }
 
   @override
@@ -45,7 +47,8 @@ class _HomePageState extends State<HomePage> {
         _scrollController.position.maxScrollExtent) {
       // Load more when scrolling reaches the end
       _documentsController.fetchDocuments();
-      setState(() {});
+      setState(() {
+      });
     }
   }
 

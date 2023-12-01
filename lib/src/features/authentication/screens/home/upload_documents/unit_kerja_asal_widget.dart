@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:ssedisdik/src/features/authentication/models/unit_kerja_model.dart';
 
 class UnitKerjaAsalButton extends StatefulWidget {
-  final List<UnitKerjaModel> units;
-  const UnitKerjaAsalButton({super.key, required this.units});
+  final UnitKerjaModel? selectedUnitKerja;
+  final List<UnitKerjaModel> unitKerjas;
+  final ValueChanged<UnitKerjaModel?> onChanged;
+
+  const UnitKerjaAsalButton({super.key, 
+    required this.selectedUnitKerja,
+    required this.unitKerjas,
+    required this.onChanged,
+  });
 
   @override
   State<UnitKerjaAsalButton> createState() => _UnitKerjaAsalButtonState();
@@ -28,17 +35,13 @@ class _UnitKerjaAsalButtonState extends State<UnitKerjaAsalButton> {
           style: txtTheme.displaySmall?.copyWith(fontSize: 14),
           decoration: const InputDecoration.collapsed(hintText: ""),
           isExpanded: true,
-          items: widget.units.map((UnitKerjaModel unitsKerja) {
+          items: widget.unitKerjas.map((UnitKerjaModel unitsKerja) {
             return DropdownMenuItem<UnitKerjaModel>(
               value: unitsKerja,
-              child: Text(unitsKerja.unitKerja),
+              child: Text(unitsKerja.name),
             );
           }).toList(),
-          onChanged: (UnitKerjaModel? newValue) {
-            setState(() {
-              selectedUnitKerja = newValue;
-            });
-          },
+          onChanged: widget.onChanged,
           hint: const Text(' -- Pilih Unit Kerja Asal -- '),
         ),
       ),

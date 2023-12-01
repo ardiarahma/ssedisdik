@@ -1,19 +1,24 @@
 import 'package:get/get.dart';
 import 'package:ssedisdik/src/features/authentication/models/pejabat_model.dart';
+import 'package:ssedisdik/src/utils/api_service.dart';
 
 class PejabatController extends GetxController {
-  final List<PejabatModel> _pejabat = [
-    PejabatModel(
-      pejabatId: 1,
-      pejabat: "Purwosusilo, M.Pd",
-    ),
-    PejabatModel(
-      pejabatId: 2,
-      pejabat: "Agus Ramdani",
-    ),
+  final ApiService apiService = ApiService();
+  final RxList<PejabatModel> _pejabatTte = <PejabatModel>[].obs;
 
-    // Tambahkan kategori lainnya di sini
-  ];
+  RxList<PejabatModel> get pejabatTte => _pejabatTte;
 
-  List<PejabatModel> get pejabats => _pejabat;
+  Future<void> fetchPejabat(String selectedUnitKerjaId) async {
+    try {
+      final fetchPejabatTte = await apiService.fetchPejabat(
+        term: ' ',
+        take: 50, // your take value
+        skip: 0,
+        group: selectedUnitKerjaId,
+      );
+      _pejabatTte.assignAll(fetchPejabatTte);
+    } catch (error) {
+      print('Error fetching pejabat : $error');
+    }
+  }
 }

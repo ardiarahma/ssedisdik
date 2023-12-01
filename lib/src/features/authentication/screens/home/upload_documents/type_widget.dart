@@ -16,7 +16,7 @@ class _TypeDropdownButtonState extends State<TypeDropdownButton> {
     Size size = MediaQuery.of(context).size;
     final txtTheme = Theme.of(context).textTheme;
     return Container(
-      width: size.width * 0.15,
+      width: size.width * 0.18,
       decoration: BoxDecoration(
           color: const Color.fromARGB(237, 238, 238, 238),
           borderRadius: BorderRadius.circular(20.0)),

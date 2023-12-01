@@ -8,7 +8,7 @@ import 'package:flutter/material.dart'
         runApp;
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:ssedisdik/src/features/authentication/controllers/home/documents_categories_controller.dart';
+import 'package:ssedisdik/src/features/authentication/controllers/home/upload/documents_categories_controller.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/home/documents_controller.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/login/session_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/splash_screen/splash_screen.dart';
