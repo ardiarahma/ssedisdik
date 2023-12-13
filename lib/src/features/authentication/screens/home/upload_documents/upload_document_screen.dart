@@ -1,6 +1,8 @@
 import 'package:colorful_safe_area/colorful_safe_area.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/common_widgets/bullet_widget.dart';
 import 'package:ssedisdik/src/common_widgets/custom_appbar_widget.dart';
 import 'package:ssedisdik/src/common_widgets/number_inc_dec_widget.dart';
@@ -80,8 +82,15 @@ class _UploadScreenState extends State<UploadScreen> {
   // to add TTE Details
   List<RowDataItem> rowDataList = [];
 
-  // 
-  String selectedFileName = "";
+  // State variable to store the selected file name
+  String selectedFileName = '';
+
+  // Function to update the selected file name
+  void updateSelectedFileName(String fileName) {
+    setState(() {
+      selectedFileName = fileName;
+    });
+  }
 
   @override
   void initState() {
@@ -98,7 +107,7 @@ class _UploadScreenState extends State<UploadScreen> {
       }
       setState(() {});
     } catch (error) {
-      print('Error fetching categories: $error');
+      logger.e('Error fetching categories: $error');
     }
   }
 
@@ -110,7 +119,7 @@ class _UploadScreenState extends State<UploadScreen> {
       }
       setState(() {});
     } catch (error) {
-      print('Error fetching categories: $error');
+      logger.e('Error fetching categories: $error');
     }
   }
 
@@ -163,7 +172,7 @@ class _UploadScreenState extends State<UploadScreen> {
               ),
               // -- End of AppBar
 
-              // -- Content StartS
+              // -- Content Start
               Container(
                 padding: const EdgeInsets.only(
                     left: tHomePadding, right: tHomePadding, top: tHomePadding),
@@ -280,7 +289,22 @@ class _UploadScreenState extends State<UploadScreen> {
                       child: Row(
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              FilePickerResult? result =
+                                  await FilePicker.platform.pickFiles(
+                                type: FileType.custom,
+                                allowedExtensions: ['pdf'],
+                              );
+
+                              // Check if a file was selected
+                              if (result != null) {
+                                // Get the file name
+                                String fileName = result.files.single.name;
+
+                                // Update the selected file name
+                                updateSelectedFileName(fileName);
+                              }
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: buttonColor2,
                               elevation: 0.0, // Remove button shadow
@@ -296,11 +320,13 @@ class _UploadScreenState extends State<UploadScreen> {
                           const SizedBox(
                               width:
                                   8.0), // Add spacing between the button and container
-                          const Text(
-                            'Text inside the container',
-                            style: TextStyle(color: Colors.black),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
+                          Expanded(
+                            child: Text(
+                              selectedFileName,
+                              style: const TextStyle(color: Colors.black),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
                           ),
                         ],
                       ),
@@ -428,7 +454,7 @@ class _UploadScreenState extends State<UploadScreen> {
                         if (selectedUnitKerja != null) {
                           // Extract the id from selectedUnitKerja
                           String? selectedUnitKerjaId = selectedUnitKerja?.id;
-                          print(selectedUnitKerjaId);
+                          logger.d("Unit Kerja : $selectedUnitKerjaId");
 
                           if (selectedUnitKerjaId != null) {
                             // Call fetchPejabat with the selectedUnitKerjaId
@@ -465,7 +491,7 @@ class _UploadScreenState extends State<UploadScreen> {
                         if (selectedPejabat != null) {
                           // Extract the id from selectedUnitKerja
                           String? selectedPejabatName = selectedPejabat?.name;
-                          print(selectedPejabatName);
+                          logger.d("pejabat tte : $selectedPejabatName");
                         }
                       },
                     ),

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/features/authentication/models/documents_model.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
@@ -13,7 +14,7 @@ class DocumentsController extends GetxController {
 
   Future<void> fetchDocuments() async {
     try {
-      print('Fetching documents..');
+      logger.d('Fetching documents..');
       isFetching.value = true; // Set isFetching to true before fetching
       final newDocuments = await _apiService.fetchPaginatedAndFilteredDocuments(
         page: currentPage,
@@ -27,11 +28,11 @@ class DocumentsController extends GetxController {
       // Perform the API call and data processing
       isFetching.value = false; 
       // Set isFetching back to false after fetching
-      print('Documents has fetched');
+      logger.i('Documents has fetched');
     } catch (error) {
       // Handle error and set isFetching back to false
       isFetching.value = false;
-      print('Error fetching documents: $error + data tidak muncul');
+      logger.e('Error fetching documents: $error + data tidak muncul');
     }
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:provider/provider.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/features/authentication/models/response/home_carousel_response.dart';
@@ -44,11 +45,11 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
 
       carouselItems = (homeCarouselResponse?.docResults.entries ?? []).map((entry) {
         final statusNumeric = int.parse(entry.key);
-        print("Status Numeric: $statusNumeric");
+        logger.i("Status Numeric: $statusNumeric");
         final statusText = statusMap[statusNumeric] ?? 'Unknown Status';
-        print("Status Text: $statusText");
+        logger.i("Status Text: $statusText");
         final count = entry.value.toString();
-        print("Count: $count");
+        logger.i("Count: $count");
         return MapEntry(statusText, count);
       }).toList();
 
@@ -111,7 +112,7 @@ class _HomeCarouselWidgetState extends State<HomeCarouselWidget> {
             options: CarouselOptions(
               onPageChanged: (index, reason) {
                 setState(() {
-                  print(reason.toString());
+                  logger.d(reason.toString());
                   currentIndex = index;
                 });
               },

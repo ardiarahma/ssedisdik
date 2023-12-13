@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/constants/text_strings.dart';
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    print('Initial currentPage: ${_documentsController.currentPage}');
+    logger.d('Initial currentPage: ${_documentsController.currentPage}');
     _documentsController.fetchDocuments();
     _scrollController.addListener(_scrollListener);
     setState(() {
@@ -53,13 +54,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _refreshData() async {
-    print('Refreshing data...');
+    logger.i('Refreshing data...');
     await Future.delayed(const Duration(seconds: 1));
     setState(() {
       carouselData = List.generate(5, (index) => 'Item ${index + 1}');
       _documentsController.fetchDocuments();
     });
-    print('Data refreshed');
+    logger.i('Data refreshed');
   }
 
   @override

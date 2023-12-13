@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
 import 'package:ssedisdik/src/features/authentication/screens/login/login_screen.dart';
@@ -43,16 +44,16 @@ class _ProfilePageState extends State<ProfilePage> {
     final sessionManager =
         Provider.of<SessionManager>(_sessionContext, listen: false);
     sessionManager.resetSessionTimeoutTimer();
-    print("nik value: ${userData['nik']}");
+    logger.i("nik value: ${userData['nik']}");
   }
 
   void _handleLogout() async {
     try {
       await apiService.logout();
       Get.off(const LoginScreen());
-      print('logout successful');
+      logger.i('logout successful');
     } catch (error) {
-      print('logout unsuccessful');
+      logger.i('logout unsuccessful');
       throw Exception('Logout error: $error');
     }
   }

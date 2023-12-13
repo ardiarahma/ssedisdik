@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/features/authentication/models/unit_kerja_model.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
@@ -17,7 +18,7 @@ class UnitKerjaController extends GetxController {
       );
       _unitKerja.assignAll(fetchUnitKerja);
     } catch (error) {
-      print('Error fetching unit kerja : $error');
+      logger.e('Error fetching unit kerja : $error');
     }
   }
 }

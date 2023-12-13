@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
 import 'package:ssedisdik/src/constants/image_strings.dart';
 import 'package:ssedisdik/src/constants/sizes.dart';
@@ -56,10 +57,10 @@ class _LoginFormState extends State<LoginForm> {
       _sessionManager.resetSessionTimeoutTimer();
 
       Get.off(const MyDrawer());
-      print('login successful');
+      logger.i('login successful');
     } catch (error) {
       // Handle login or API errors
-      print('login unsuccessful');
+      logger.i('login unsuccessful');
       throw Exception('Login error: $error');
     }
   }

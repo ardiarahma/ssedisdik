@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/features/authentication/models/pejabat_model.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
@@ -18,7 +19,7 @@ class PejabatController extends GetxController {
       );
       _pejabatTte.assignAll(fetchPejabatTte);
     } catch (error) {
-      print('Error fetching pejabat : $error');
+      logger.e('Error fetching pejabat : $error');
     }
   }
 }

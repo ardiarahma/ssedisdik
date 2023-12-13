@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/features/authentication/models/documents_categories_model.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
 
@@ -17,7 +18,7 @@ class DocCategoriesController extends GetxController {
       );
       _categories.assignAll(fetchedCategories);
     } catch (error) {
-      print('Error fetching categories: $error');
+      logger.e('Error fetching categories: $error');
     }
   }
 }
