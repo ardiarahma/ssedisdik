@@ -294,7 +294,7 @@ class _UploadScreenState extends State<UploadScreen> {
                                   await FilePicker.platform.pickFiles(
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf'],
-                              );
+                              ); 
                               // Check if a file was selected
                               if (result != null) {
                                 // Get the file name
