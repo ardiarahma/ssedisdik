@@ -295,7 +295,6 @@ class _UploadScreenState extends State<UploadScreen> {
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf'],
                               );
-
                               // Check if a file was selected
                               if (result != null) {
                                 // Get the file name
