@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/features/authentication/models/documents_model.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_details_screen.dart';
 
 class DocumentsWidget extends StatefulWidget {
   const DocumentsWidget({super.key, required this.model});
@@ -30,7 +32,8 @@ class _DocumentsWidgetState extends State<DocumentsWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 5.0, right: 10.0, bottom: 5.0),
+              padding: const EdgeInsets.only(
+                  left: 10.0, top: 5.0, right: 10.0, bottom: 5.0),
               child: Text(
                 widget.model.documentName,
                 textAlign: TextAlign.left,
@@ -79,7 +82,8 @@ class _DocumentsWidgetState extends State<DocumentsWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 5.0),
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 5.0),
               child: Row(
                 children: [
                   Text("Total TTE : ",
@@ -95,6 +99,80 @@ class _DocumentsWidgetState extends State<DocumentsWidget> {
                           .textTheme
                           .displayMedium
                           ?.copyWith(fontSize: 14, color: Colors.white)),
+                ],
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 5.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  SizedBox(
+                    width: 45,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                      child: const Icon(Icons.info_outline_rounded),
+                      onPressed: () => Get.to(
+                          () => DocItemDetailScreen(model: widget.model)),
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  SizedBox(
+                    width: 45,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                      child: const Icon(Icons.edit),
+                      onPressed: () {
+                        // Add your "Edit" button logic here
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 5),
+                  SizedBox(
+                    width: 45,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                      child: Icon(Icons.delete_outline_rounded),
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Konfirmasi'),
+                                content: const Text(
+                                    'Apakah Anda yakin ingin menghapus dokumen ini?'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      // Add your "Yes" button logic here
+                                      Navigator.of(context).pop();
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        const SnackBar(
+                                          content:
+                                              Text('Dokumen berhasil dihapus!'),
+                                          duration: Duration(seconds: 3),
+                                        ),
+                                      );
+                                    },
+                                    child: const Text('Ya'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('Tidak'),
+                                  ),
+                                ],
+                              );
+                            });
+                      },
+                    ),
+                  ),
                 ],
               ),
             )

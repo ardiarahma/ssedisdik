@@ -73,15 +73,22 @@ const String tDocumentPageOrientation = "Posisi";
 const String tDocumentPageType = "Jenis";
 const String tDocumentPageTag = "Tanda Tag";
 
+// -- Home Page - Document - Item Details
+const String tItemDetailsTitle = "Detail Dokumen";
 
 // -- Home Page - Upload Documents - Rule
 const String tBullet1 = "Dokumen harus berformat PDF.";
-const String tBullet2 = "Lokasi TTE pada dokumen telah ditandai dengan hastag(#).";
-const String tBullet3 = "Jika ada dua TTE dalam satu halaman, maka dibedakan dengan jumlah hastag(#). Contoh: # dan ##.";
-const String tBullet4 = "Dokumen tanpa tanda hastag(#), TTE tidak akan terproses kecuali untuk permintaan paraf.";
-const String tBullet5 = "Khusus untuk multi file (unggah lebih dari satu file), harus memiliki format dan posisi TTE yang sama.";
+const String tBullet2 =
+    "Lokasi TTE pada dokumen telah ditandai dengan hastag(#).";
+const String tBullet3 =
+    "Jika ada dua TTE dalam satu halaman, maka dibedakan dengan jumlah hastag(#). Contoh: # dan ##.";
+const String tBullet4 =
+    "Dokumen tanpa tanda hastag(#), TTE tidak akan terproses kecuali untuk permintaan paraf.";
+const String tBullet5 =
+    "Khusus untuk multi file (unggah lebih dari satu file), harus memiliki format dan posisi TTE yang sama.";
 const String tBullet6 = "Maksimal unggah 500 dokumen dalam sekali proses";
-const String tBullet7 = "Petunjuk teknis set TTE pada dokumen sebelum diunggah dapat dilihat pada video ini.";
+const String tBullet7 =
+    "Petunjuk teknis set TTE pada dokumen sebelum diunggah dapat dilihat pada video ini.";
 
 // -- Profile Page - Edit Profile
 const String tNamaLengkap = "Nama Lengkap";
@@ -90,5 +97,3 @@ const String tNomorHandphone = "Nomor Handphone";
 const String tEmail = "Email";
 const String tUnitKerja = "Unit Kerja";
 const String tJabatan = "Jabatan";
-
-

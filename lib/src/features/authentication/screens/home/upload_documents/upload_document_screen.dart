@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/common_widgets/bullet_widget.dart';
 import 'package:ssedisdik/src/common_widgets/custom_appbar_widget.dart';
+import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
 import 'package:ssedisdik/src/common_widgets/number_inc_dec_widget.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/orientation_controller.dart';
 import 'package:ssedisdik/src/features/authentication/controllers/pejabat_controller.dart';
@@ -23,6 +24,8 @@ import 'package:ssedisdik/src/features/authentication/controllers/home/upload/do
 import 'package:ssedisdik/src/features/authentication/controllers/home/upload/unit_kerja_controller.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/document_categories_widget.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/unit_kerja_tujuan_widget.dart';
+import 'package:ssedisdik/src/utils/loading_dialog.dart';
+import 'package:ssedisdik/src/utils/success_dialog.dart';
 
 class RowDataItem {
   String halaman = '';
@@ -39,10 +42,10 @@ class UploadScreen extends StatefulWidget {
 }
 
 class _UploadScreenState extends State<UploadScreen> {
-//   void postData() async {
+  bool isLoading = false;
+//   void postData(String document_name) async {
 //   try {
 //     final requestData = {
-//       // Populate this map with the required parameters for your POST request
 //       'nama_dokumen': 'Document Name',
 //       'kategori_dokumen': 'Document Category',
 //       'asal_dokumen' : '',
@@ -294,7 +297,7 @@ class _UploadScreenState extends State<UploadScreen> {
                                   await FilePicker.platform.pickFiles(
                                 type: FileType.custom,
                                 allowedExtensions: ['pdf'],
-                              ); 
+                              );
                               // Check if a file was selected
                               if (result != null) {
                                 // Get the file name
@@ -654,26 +657,123 @@ class _UploadScreenState extends State<UploadScreen> {
                     // -- Ends of Documents Detail -- TTE Details ListView.builder
 
                     // -- Button to Add TTE Details
-                    SizedBox(
-                      width: size.width * 0.27,
-                      height: size.height * 0.04,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Add a new row when the button is pressed
-                          setState(() {
-                            rowDataList.add(RowDataItem());
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: buttonColor, // Remove button shadow
-                          shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: size.width * 0.27,
+                          height: size.height * 0.04,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Add a new row when the button is pressed
+                              setState(() {
+                                rowDataList.add(RowDataItem());
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  Colors.blueGrey, // Remove button shadow
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                            ),
+                            child: const Text('Tambah TTE'),
+                          ),
+                        ), // -- Ends of Button to Add TTE Details
+
+                        // -- Button to Save Dokumen
+                        SizedBox(
+                          width: size.width * 0.27,
+                          height: size.height * 0.04,
+                          child: ElevatedButton(
+                            onPressed: () async {
+                              setState(() {
+                                isLoading = true;
+                              });
+
+                              // Show loading dialog
+                              LoadingDialog.showLoadingDialog(context);
+
+                              //close loading dialog
+                              try {
+                                final scaffoldContext =
+                                    ScaffoldMessenger.of(context);
+                                // Call your API function here or any other asynchronous task
+                                // Example: await ApiService().postDocumentData(requestData: yourData);
+
+                                // Simulate API call with a delay (replace this with your actual API call)
+                                await Future.delayed(
+                                    const Duration(seconds: 2));
+                                scaffoldContext.hideCurrentSnackBar();
+
+                                // Close the loading dialog
+                                Navigator.of(context).pop();
+
+                                // Show success dialog after the API call is complete
+                                Future.delayed(Duration.zero, () {
+                                  SuccessDialog.showSuccessDialog(context);
+                                });
+
+                                Future.delayed(Duration(seconds: 3), () {
+                                  Navigator.of(context).pop();
+                                });
+
+                                Future.delayed(Duration(seconds: 6), () {
+                                  Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MyDrawer()),
+                                    (route) => false,
+                                  );
+                                  // Navigator.of(context).pop();
+                                });
+                                // Navigate to the new screen after the API call is complete
+                                // if (Navigator.canPop(context)) {
+                                //   Navigator.pop(context);
+                                // } else {
+                                //   Navigator.pushAndRemoveUntil(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => MyDrawer()),
+                                //     (route) => false,
+                                //   );
+                                // }
+                              } catch (error) {
+                                // Handle errors if needed
+                                print('Error: $error');
+                              } finally {
+                                // Set loading to false after API call is done
+                                setState(() {
+                                  isLoading = false;
+                                });
+
+                                // Close the loading dialog
+                                Navigator.of(context).pop();
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  buttonColor, // Remove button shadow
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                            ),
+                            child: isLoading
+                                ? SizedBox(
+                                    height: 20,
+                                    width: 20,
+                                    child: const CircularProgressIndicator(
+                                      strokeWidth: 3,
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Colors.white),
+                                    ),
+                                  )
+                                : const Text('Simpan'),
+                          ),
                         ),
-                        child: const Text('Tambah TTE'),
-                      ),
+                        // -- Ends of Button to Save Dokumen
+                      ],
                     ),
-                    // -- Ends of Button to Add TTE Details
 
                     const SizedBox(
                       height: 60.0,

@@ -55,6 +55,7 @@ dependencies:
   matcher: ^0.12.16
   file_picker: ^4.1.0
   logger: ^2.0.2+1
+  lottie: ^2.7.0
   
 
 dev_dependencies:
@@ -96,6 +97,10 @@ flutter:
     - assets/images/welcome_images/
     
     - assets/logo/
+
+    - assets/loading_animation.json
+    - assets/loading_animation_1.json
+    - assets/success_animation.json
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
