@@ -15,9 +15,12 @@ class LoginHeaderWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.displayLarge,
           textAlign: TextAlign.center,
         ),
-        Text(tLoginSubtitle,
-            style: Theme.of(context).textTheme.displayMedium,
-            textAlign: TextAlign.center),
+        Text(
+          tLoginSubtitle,
+          style:
+              Theme.of(context).textTheme.displayMedium?.copyWith(fontSize: 14),
+          textAlign: TextAlign.center,
+        ),
       ],
     );
   }

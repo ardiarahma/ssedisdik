@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:ssedisdik/main.dart';
 import 'package:ssedisdik/src/common_widgets/hidden_drawer.dart';
@@ -21,6 +22,8 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  final LocalAuthentication auth = LocalAuthentication();
+
   final ApiService apiService = ApiService();
   late SessionManager _sessionManager;
 
@@ -36,6 +39,23 @@ class _LoginFormState extends State<LoginForm> {
       _obscurePassword = !_obscurePassword;
     });
   }
+
+  // Future<void> _authenticate() async {
+  //   bool authenticated = false;
+  //   try {
+  //     authenticated = await auth.authenticate(
+  //       localizedReason: 'Scan your fingerprint to authenticate',
+  //       biometricOnly: true,
+  //     );
+  //   } catch (e) {
+  //     print(e);
+  //   }
+
+  //   if (authenticated) {
+  //     Get.to(() =>
+  //         const MyDrawer()); // Navigate to the next screen if the authentication is successful
+  //   }
+  // }
 
   @override
   void didChangeDependencies() {
@@ -147,7 +167,8 @@ class _LoginFormState extends State<LoginForm> {
                               ],
                             ),
                             child: TextButton(
-                                onPressed: () => Get.to(() => const MyDrawer()),
+                                onPressed: () {},
+                                // onPressed: _authenticate,
                                 child: const Icon(
                                   Icons.fingerprint_rounded,
                                   color: Colors.white,

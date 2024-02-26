@@ -50,12 +50,13 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   json_annotation: ^4.8.1
   passwordfield: ^0.2.0
-  local_auth: ^2.1.6
+  local_auth: ^2.1.8
   provider: ^6.0.5
   matcher: ^0.12.16
   file_picker: ^4.1.0
   logger: ^2.0.2+1
   lottie: ^2.7.0
+
   
 
 dev_dependencies:
@@ -91,6 +92,8 @@ flutter:
     - assets/images/user.png
     - assets/images/bell.png
     - assets/images/more_primary.png
+    - assets/images/wave.png
+    - assets/images/lowpoly.png
 
     - assets/images/splash_images/
     - assets/images/on_boarding_images/

@@ -54,8 +54,7 @@ class _HomeHeaderWidgetState extends State<HomeHeaderWidget> {
           Row(
             children: [
               Padding(
-                padding:
-                    const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 15),
+                padding: const EdgeInsets.only(bottom: 15),
                 child: Image(
                     image: const AssetImage(logoSseOnly),
                     height: widget.size.height * 0.5),

@@ -44,10 +44,10 @@ class _DocItemDetailScreenState extends State<DocItemDetailScreen> {
     Color color;
 
     switch (status) {
-      case 'Draft':
+      case 'Draft Dokumen':
         color = Colors.blue;
         break;
-      case 'Terkirim':
+      case 'Dokumen Terkirim':
         color = Colors.orange;
         break;
       case 'Selesai':

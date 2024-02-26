@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/home_screen_new.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/upload_documents/upload_document_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/login/login_screen.dart';
-import 'package:ssedisdik/src/features/authentication/screens/validation_page/doc_page.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/home_screen.dart';
 import 'package:ssedisdik/src/features/authentication/screens/profile/profile_screen.dart';
 import 'package:ssedisdik/src/utils/api_service.dart';
@@ -38,7 +39,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
               colorLineSelected: Colors.teal,
               selectedStyle: const TextStyle(color: Colors.white)),
-          const HomePage()),
+          const HomePageNew()),
     );
 
     _pages.add(
@@ -56,7 +57,7 @@ class _MyDrawerState extends State<MyDrawer> {
     _pages.add(
       ScreenHiddenDrawer(
           ItemHiddenMenu(
-            name: "Validasi",
+            name: "Dokumen",
             baseStyle: const TextStyle(
               color: Colors.white,
             ),

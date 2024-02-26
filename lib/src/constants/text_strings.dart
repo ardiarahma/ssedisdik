@@ -73,8 +73,9 @@ const String tDocumentPageOrientation = "Posisi";
 const String tDocumentPageType = "Jenis";
 const String tDocumentPageTag = "Tanda Tag";
 
-// -- Home Page - Document - Item Details
+// -- Home Page - Document - Item
 const String tItemDetailsTitle = "Detail Dokumen";
+const String tItemEditTitle = "Edit Dokumen";
 
 // -- Home Page - Upload Documents - Rule
 const String tBullet1 = "Dokumen harus berformat PDF.";

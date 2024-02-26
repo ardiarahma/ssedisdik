@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ssedisdik/src/constants/colors.dart';
 import 'package:ssedisdik/src/features/authentication/models/documents_model.dart';
 import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_details_screen.dart';
+import 'package:ssedisdik/src/features/authentication/screens/home/documents/doc_edit_screen.dart';
 
 class DocumentsWidget extends StatefulWidget {
   const DocumentsWidget({super.key, required this.model});
@@ -125,9 +126,8 @@ class _DocumentsWidgetState extends State<DocumentsWidget> {
                       style: ButtonStyle(
                           padding: MaterialStateProperty.all(EdgeInsets.zero)),
                       child: const Icon(Icons.edit),
-                      onPressed: () {
-                        // Add your "Edit" button logic here
-                      },
+                      onPressed: () =>
+                          Get.to(() => DocItemEditScreen(model: widget.model)),
                     ),
                   ),
                   const SizedBox(width: 5),

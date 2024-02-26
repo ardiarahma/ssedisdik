@@ -11,19 +11,19 @@ class LoginFooterWidget extends StatelessWidget {
       children: [
         Text(
           tFooterDev,
-          style: Theme.of(context).textTheme.displayMedium?.copyWith(
+          style: Theme.of(context).textTheme.displaySmall?.copyWith(
               color: Theme.of(context)
                   .textTheme
-                  .displayMedium
+                  .displaySmall
                   ?.color!
                   .withAlpha(128)),
           textAlign: TextAlign.center,
         ),
         Text(tFooterDisdik,
-            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
                 color: Theme.of(context)
                     .textTheme
-                    .displayMedium
+                    .displaySmall
                     ?.color!
                     .withAlpha(128)),
             textAlign: TextAlign.center),

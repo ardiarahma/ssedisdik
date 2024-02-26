@@ -32,10 +32,10 @@ class LoginScreen extends StatelessWidget {
                   18000,
                   5000
                 ], heightPercentages: [
-                  0.15,
-                  0.16,
                   0.18,
-                  0.21
+                  0.19,
+                  0.21,
+                  0.24
                 ]),
                 backgroundColor: primaryColor,
                 size: const Size(double.maxFinite, double.infinity)),
@@ -54,10 +54,7 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             const Positioned(
-                bottom: 10.0,
-                left: 0.0,
-                right: 0.0,
-                child: LoginFooterWidget())
+                bottom: 10.0, left: 0.0, right: 0.0, child: LoginFooterWidget())
           ],
         ),
       ),

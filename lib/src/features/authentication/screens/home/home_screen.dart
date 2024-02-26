@@ -48,8 +48,7 @@ class _HomePageState extends State<HomePage> {
         _scrollController.position.maxScrollExtent) {
       // Load more when scrolling reaches the end
       _documentsController.fetchDocuments();
-      setState(() {
-      });
+      setState(() {});
     }
   }
 
